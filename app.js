@@ -11,7 +11,8 @@ app.whenReady().then(() => {
 	win = new BrowserWindow({
 		webPreferences:{
 			preload:path.join(__dirname,static_file,'preload.js')
-		}
+		},
+		autoHideMenuBar: true
 	});
 	win.loadURL(`file://${__dirname}/app/index.html`);	
 });

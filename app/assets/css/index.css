@@ -1,0 +1,24 @@
+*
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	overflow: hidden;
+}
+.side_bar
+{
+	content: " ";
+	height: 100vh;
+	background-color: rgb(25, 79, 255);
+	display: inline-block;
+	width: 20%;
+}
+
+.content
+{
+	display: inline-block;
+	width: 80%;
+}
