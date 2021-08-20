@@ -1,0 +1,22 @@
+{
+  "name": "viquiz-gui",
+  "version": "1.0.0",
+  "description": "GUI for Viquiz",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viquiz/GUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Viquiz/GUI/issues"
+  },
+  "homepage": "https://github.com/Viquiz/GUI#readme",
+  "devDependencies": {
+    "electron": "^13.2.1"
+  }
+}
