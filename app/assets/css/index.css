@@ -1,24 +1,30 @@
-*
-{
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-body
-{
-	overflow: hidden;
-}
-.side_bar
-{
-	content: " ";
-	height: 100vh;
-	background-color: rgb(25, 79, 255);
-	display: inline-block;
-	width: 20%;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.content
-{
-	display: inline-block;
-	width: 80%;
+body {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
+
+body .side_bar {
+  display: inline-block;
+  content: " ";
+  height: 100vh;
+  background-color: #194fff;
+  width: 30%;
+  color: white;
+}
+
+body .content {
+  display: inline-block;
+  width: calc( 100% - 30%);
+  height: 100vh;
+  color: white;
+}
+/*# sourceMappingURL=index.css.map */
