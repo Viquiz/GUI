@@ -6,15 +6,24 @@ const static_file  ="app";
 
 
 
-let win = null;
+let window = null;
+
 app.whenReady().then(() => {
-	win = new BrowserWindow({
+	window = new BrowserWindow({
+		show:false,
+		frame:false,
 		webPreferences:{
 			preload:path.join(__dirname,static_file,'preload.js')
 		},
 		autoHideMenuBar: true
 	});
-	win.loadURL(`file://${__dirname}/app/index.html`);	
+	window.loadFile(path.join(__dirname,"app","index.html"));	
+	window.once("ready-to-show",()=>
+	{
+		window.show();
+	})
+	
+	
 });
 
 app.on('window-all-closed', function () {
@@ -31,3 +40,27 @@ ipcMain.on("message",(event,args)=>
 {
 	console.log(Buffer.from(args["msg"]));
 });
+
+
+
+
+ipcMain.on('maximize',()=>
+{
+	if(window.isMaximized())
+	{
+		window.unmaximize();
+	}
+	else{
+		window.maximize();
+	}
+});
+ipcMain.on('minimize',()=>
+{
+	window.minimize();
+});
+ipcMain.on('close',()=>
+{
+	window.close();
+});
+
+
