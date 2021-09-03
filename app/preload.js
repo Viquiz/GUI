@@ -1,5 +1,5 @@
 const { contextBridge, ipcRenderer }  = require('electron')
-
+const url = require("url");
 contextBridge.exposeInMainWorld('Driver_API',{
 	GetDeviceList: ()=> {
 			return ipcRenderer.invoke("getDevices");
@@ -21,3 +21,4 @@ contextBridge.exposeInMainWorld('BrowserWindows',{
 		ipcRenderer.send("close");
 	}
 })
+contextBridge.exposeInMainWorld('events',Events);

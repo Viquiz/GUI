@@ -17,7 +17,7 @@ app.whenReady().then(() => {
 		},
 		autoHideMenuBar: true
 	});
-	window.loadFile(path.join(__dirname,"app","index.html"));	
+	window.loadFile(path.join(__dirname,"app","index.html"),{query: {views:"lib"}});	
 	window.once("ready-to-show",()=>
 	{
 		window.show();

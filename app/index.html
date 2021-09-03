@@ -6,7 +6,8 @@
 		<link rel="stylesheet" href="./assets/fonts/all.css">
 		<link rel="stylesheet" href="./assets/css/index.css">
 		<script src="https://kit.fontawesome.com/b55cb601c2.js" crossorigin="anonymous"></script>
-		<script src="./index.js"></script>
+		<script src="./router.js" defer></script>
+		<script src="./controller.js" defer></script>
 	</head>
 	<body>
 		<div class="frame">
@@ -15,7 +16,6 @@
 			<div id="unmaximize-btn" class="frame--btn hidden"><img src="./assets/images/window-control/restore-down.png" alt="restore-down.png"></div>
 			<div id="maximize-btn" class="frame--btn"><img src="./assets/images/window-control/maximized-32px.png" alt="maximized-32px.png"></div>
 			<div id="close-btn" class="frame--btn"><img src="./assets/images/window-control/close.png" alt="close.png"></div>
-
 		</div>
 		<main>
 			<div class="side_bar">
@@ -27,6 +27,11 @@
 				<div class="view ">
 					<i class="view--icon fa fa-book"></i>
 					<span class="view--text">Libraries
+					</span>
+				</div>
+				<div class="view">
+					<i class="view--icon fa fa-gear"></i>
+					<span class="view--text">Settings
 					</span>
 				</div>
 				<div class="side_bar--seperator"></div>
