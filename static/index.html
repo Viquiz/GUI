@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<!-- BEM naming convention for css & html -->
+	<head>
+		<title>Viquiz</title>
+		<link rel="stylesheet" href="./assets/fonts/all.css">
+		<link rel="stylesheet" href="./assets/css/index.css">
+		<script src="https://kit.fontawesome.com/b55cb601c2.js" crossorigin="anonymous"></script>
+		<script src="./router.js" defer></script>
+		<script src="./controller.js" defer></script>
+		<link rel="stylesheet" href="assets/css/tailwind.css">
+	</head>
+	<body>
+		<div class="frame bg-blue-700">
+			<div class="frame--title">Viquiz</div>
+			<div id="minimize-btn" class="frame--btn" ><img src="./assets/images/window-control/minimize.png" alt="minimize.png"></div>
+			<div id="unmaximize-btn" class="frame--btn hidden"><img src="./assets/images/window-control/restore-down.png" alt="restore-down.png"></div>
+			<div id="maximize-btn" class="frame--btn"><img src="./assets/images/window-control/maximized-32px.png" alt="maximized-32px.png"></div>
+			<div id="close-btn" class="frame--btn"><img src="./assets/images/window-control/close.png" alt="close.png"></div>
+		</div>
+		<main>
+			<div class="side_bar">
+				<div class="side_bar--seperator"></div>
+				<a href="?view=Devices" class="view view__selected" change-view=1>
+					<i class="view--icon fa fa-microchip"></i>
+					<span class="view--text">Devices</span>
+				</a>
+				<a href="?view=Libs" class="view " change-view>
+					<i class="view--icon fa fa-book"></i>
+					<span class="view--text">Libraries
+					</span>
+				</a>
+				<a href="?view=settings" class="view" change-view>
+					<i class="view--icon fa fa-gear"></i>
+					<span class="view--text">Settings
+					</span>
+				</a>
+				<div class="side_bar--seperator"></div>
+			</div>
+			<div id='view' class="content">
+				<div class="container">
+					<div class="card">
+						<img src="views/libraries/images/insert-img.png">
+						<span>
+							<p>Name</p>
+							<p>description</p>
+						</span>
+						<span><p>date</p></span>
+					</div>
+					<div class="card">
+						hello
+					</div>
+					<div class="card">
+						hello
+					</div>
+					<div class="card">
+						hello
+					</div>
+				</div>
+				
+			</div>
+		</main>
+	</body>
+</html>

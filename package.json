@@ -4,8 +4,9 @@
   "description": "GUI for Viquiz",
   "main": "app.js",
   "scripts": {
-    "start": "electron .",
-    "rebuild": "cd PCDriver && npm rebuild"
+    "build:ts": "npx tsc",
+    "build:tailwind": "echo No specific command",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,10 @@
   },
   "homepage": "https://github.com/Viquiz/GUI#readme",
   "devDependencies": {
-    "electron": "^13.2.1"
+    "autoprefixer": "^10.3.4",
+    "electron": "^13.2.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.9",
+    "typescript": "^4.4.2"
   }
 }

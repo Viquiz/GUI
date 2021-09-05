@@ -1,66 +1,47 @@
-const {app, BrowserWindow, ipcMain} = require("electron");
-const Driver = require("./PCDriver");
-const path = require("path")
-const static_file  ="app";
-
-
-
-
-let window = null;
-
-app.whenReady().then(() => {
-	window = new BrowserWindow({
-		show:false,
-		frame:false,
-		webPreferences:{
-			preload:path.join(__dirname,static_file,'preload.js')
-		},
-		autoHideMenuBar: true
-	});
-	window.loadFile(path.join(__dirname,"app","index.html"),{query: {views:"lib"}});	
-	window.once("ready-to-show",()=>
-	{
-		window.show();
-	})
-	
-	
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var electron_1 = require("electron");
+var path = require("path");
+var window;
+var static_file = "static";
+electron_1.app.whenReady().then(function () {
+    window = new electron_1.BrowserWindow({
+        show: false,
+        frame: false,
+        webPreferences: {
+            preload: path.join(__dirname, static_file, 'preload.js'),
+            devTools: true
+        },
+        autoHideMenuBar: true
+    });
+    window.loadFile(path.join(__dirname, static_file, "index.html"), { query: { views: "home" } });
+    window.once("ready-to-show", function () {
+        window.show();
+    });
+    electron_1.globalShortcut.register('f5', function () {
+        console.log('f5 is pressed');
+        window.reload();
+    });
 });
-
-app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin') app.quit()
+electron_1.app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin')
+        electron_1.app.quit();
+    electron_1.globalShortcut.unregisterAll();
 });
-
-
-ipcMain.handle('getDevices',()=>
-{
-	return Driver.device_list();
+electron_1.ipcMain.on("message", function (event, args) {
+    console.log(Buffer.from(args["msg"]));
 });
-
-ipcMain.on("message",(event,args)=>
-{
-	console.log(Buffer.from(args["msg"]));
+electron_1.ipcMain.on('maximize', function () {
+    if (window.isMaximized()) {
+        window.unmaximize();
+    }
+    else {
+        window.maximize();
+    }
 });
-
-
-
-
-ipcMain.on('maximize',()=>
-{
-	if(window.isMaximized())
-	{
-		window.unmaximize();
-	}
-	else{
-		window.maximize();
-	}
+electron_1.ipcMain.on('minimize', function () {
+    window.minimize();
 });
-ipcMain.on('minimize',()=>
-{
-	window.minimize();
+electron_1.ipcMain.on('close', function () {
+    window.close();
 });
-ipcMain.on('close',()=>
-{
-	window.close();
-});
-
-
