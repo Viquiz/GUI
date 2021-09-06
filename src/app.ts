@@ -24,6 +24,7 @@ app.whenReady().then(() => {
 		window.reload()
 	})
 	
+	
 });
 
 app.on('window-all-closed', function () {
