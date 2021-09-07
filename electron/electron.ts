@@ -1,20 +1,20 @@
-import {app, BrowserWindow, ipcMain, globalShortcut} from "electron";
-import path = require("path");
+import {app, BrowserWindow, globalShortcut, ipcMain} from "electron";
+import path from "path";
 
 let window:BrowserWindow;
-const static_file = "static";
 
 app.whenReady().then(() => {
 	window = new BrowserWindow({
 		show:false,
 		frame:false,
+		//resizable:false,
 		webPreferences:{
-			preload:path.join(__dirname,static_file,'preload.js'),
+			preload:path.join(__dirname,'preload.js'),
 			devTools: true
 		},
 		autoHideMenuBar: true
 	});
-	window.loadFile(path.join(__dirname,static_file,"index.html"),{query: {views:"home"}});	
+	window.loadURL("http://localhost:3000");
 	window.once("ready-to-show",()=>
 	{
 		window.show();
@@ -28,8 +28,8 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin') app.quit()
 	globalShortcut.unregisterAll();
+	if (process.platform !== 'darwin') app.quit()
 });
 
 
@@ -37,10 +37,6 @@ ipcMain.on("message",(event,args)=>
 {
 	console.log(Buffer.from(args["msg"]));
 });
-
-
-
-
 ipcMain.on('maximize',()=>
 {
 	if(window.isMaximized())
@@ -59,5 +55,4 @@ ipcMain.on('close',()=>
 {
 	window.close();
 });
-
 

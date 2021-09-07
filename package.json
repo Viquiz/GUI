@@ -1,28 +1,63 @@
 {
-  "name": "viquiz-gui",
-  "version": "1.0.0",
-  "description": "GUI for Viquiz",
-  "main": "app.js",
+  "name": "viquiz-react",
+  "version": "0.1.0",
+  "private": true,
+  "main": "electron.js",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
   "scripts": {
-    "build:ts": "npx tsc",
-    "build:tailwind": "npx tailwindcss build -i ./src/css/tailwind.css -o ./static/assets/css/tailwind.css",
-    "start": "electron ."
+    "start:web:craco": "craco start",
+    "build:web:craco": "craco build",
+    "test:web:craco": "craco test",
+    "start:web": "react-scripts start",
+    "build:web": "react-scripts build",
+    "test:web": "react-scripts test",
+    "build:desktop": "npx tsc -p ./electron",
+    "start:desktop": "yarn run build:desktop && electron ./build/electron.js",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Viquiz/GUI.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Viquiz/GUI/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/Viquiz/GUI#readme",
   "devDependencies": {
-    "autoprefixer": "^10.3.4",
+    "@craco/craco": "^6.2.0",
+    "autoprefixer": "9",
     "electron": "^14.0.0",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.9",
-    "typescript": "^4.4.2"
-  }
+    "node-sass": "^6.0.1",
+    "postcss": "7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  },
+  "homepage": "./"
 }
