@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as faIcons from "react-icons/fa";
 import "./navbar.css"
+// https://www.npmjs.com/package/react-pro-sidebar
 
+// import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 class NavBar extends React.Component
 {
@@ -10,13 +13,21 @@ class NavBar extends React.Component
 		<nav className="navbar">
 			<ul className="navlink-container border-t-2 border-b-2 border-black py-2">
 				<li>
-					<a  className="navlink" href="#">
+					<Link className="navlink" to="/libraries">
 						<faIcons.FaBook className="navlink--icon"></faIcons.FaBook>
 						<span className="navlink--text"> Libraries</span>
-					</a>
+					</Link>
+				</li>
+
+				<li>
+					<Link className="navlink" to="/devices">
+						<faIcons.FaAndroid className="navlink--icon"></faIcons.FaAndroid>
+						<span className="navlink--text"> Devices</span>
+					</Link>
 				</li>
 			</ul>
-		</nav>);
+		</nav>
+		);
 	}
 }
 
