@@ -25,12 +25,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start:web:craco": "craco start",
-    "build:web:craco": "craco build",
-    "test:web:craco": "craco test",
-    "start:web": "react-scripts start",
-    "build:web": "react-scripts build",
-    "test:web": "react-scripts test",
+    "start:web": "craco start",
+    "build:web": "craco build",
+    "test:web": "craco test",
     "build:desktop": "npx tsc -p ./electron",
     "start:desktop": "yarn run build:desktop && electron ./build/electron.js",
     "eject": "react-scripts eject"

@@ -13,17 +13,17 @@ class NavBar extends React.Component
 		<nav className="navbar">
 			<ul className="navlink-container border-t-2 border-b-2 border-black py-2">
 				<li>
-					<Link className="navlink" to="/libraries">
+					<Link className="navlink" to="/Home">
 						<faIcons.FaBook className="navlink--icon"></faIcons.FaBook>
 						<span className="navlink--text"> Libraries</span>
 					</Link>
 				</li>
 
 				<li>
-					<Link className="navlink" to="/devices">
+					{/* <Link className="navlink" to="/devices"> */}
 						<faIcons.FaAndroid className="navlink--icon"></faIcons.FaAndroid>
 						<span className="navlink--text"> Devices</span>
-					</Link>
+					{/* </Link> */}
 				</li>
 			</ul>
 		</nav>

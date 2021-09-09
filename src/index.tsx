@@ -1,11 +1,12 @@
-// import * as PouchDB from 'pouchdb';
 import PouchDB from 'pouchdb';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import "./style/tailwind.css"
-import "./components/navbar/navbar.tsx"
 import NavBar from './components/navbar/navbar';
-import { BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route, HashRouter} from 'react-router-dom';
+import "./style/tailwind.css";
+import App from "./App";
+import Home from './pages/home/home';
+
 
 // // run here not a good idea ... but where xD ?
 let db = new PouchDB("localDB");
@@ -32,40 +33,25 @@ db.get('mydoc').then(function (doc) {
 	console.log(err);
   });
 
-class App extends React.Component
-{
-	render() {
-		return(
-			// this is ... the real main =)
-			<main style = {{position: 'fixed', right: "0", width: "calc(100vw - 200px)",}}>
-			<Switch>
-
-			<Route path = "/libraries">
-				 <h1>Libraries page</h1>
-	  		</Route>
-
-			<Route path = "/Devices">
-				 <h1>Devices page</h1>
-	  		</Route>
-
-			<Route path = "/">
-				 <h1>index page</h1>
-	  		</Route>
-
-			</Switch>
-			</main>
-		);
-	}
-}
-
 ReactDOM.render(
 	<React.StrictMode>
 		<>
-		<BrowserRouter>	
-		 {/* should move NavBar outside main ...  */}
-		 <NavBar/>
-		  <App/>
-		</BrowserRouter>
+
+		{/* 
+		HashRouter instead of BrowserRouter
+		BrowserRouter use with file protocol has different path base on where the application is located.
+		ex:
+			executable root: d:\Viquiz\viquiz.exe
+			=> url path = d:\Viquiz\ 
+			instead of path = "/"
+		
+		*/}
+		<HashRouter>
+			<NavBar/>
+			<App>
+				<Route path="/Home" component={Home}/>
+			</App>
+		</HashRouter>
 		</>
 	</React.StrictMode>,
 	document.getElementById('root')
