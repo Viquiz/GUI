@@ -1,5 +1,30 @@
 import {app, BrowserWindow, globalShortcut, ipcMain} from "electron";
+import PouchDB from 'pouchdb';
 import path from "path";
+
+
+var db = new PouchDB('./test3');
+//console.log(pouch.adapter)
+let data = {
+	_id: 'myDoc',
+	title: 'Heroes'
+  };
+
+//save to local ... who care where is it 
+db.put(data).then(function (response) {
+	// handle response
+  }).catch(function (err) {
+	console.log(err);
+  });
+
+//get data ( by _id)
+db.get('myDoc').then(function (doc) {
+	// handle doc
+	console.log("from local database");
+	console.log(doc);
+  }).catch(function (err) {
+	console.log(err);
+  });
 
 let window:BrowserWindow;
 
