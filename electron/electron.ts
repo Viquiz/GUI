@@ -1,5 +1,8 @@
 import {app, BrowserWindow, globalShortcut, ipcMain} from "electron";
 import path from "path";
+// import websql from 'websql';
+
+// var db = websql('mydb.db', '1.0', 'description', 1);
 
 let window:BrowserWindow;
 
@@ -14,7 +17,7 @@ app.whenReady().then(() => {
 		},
 		autoHideMenuBar: true
 	});
-	window.loadURL("http://localhost:3000");
+	window.loadURL("http://localhost:11234");
 	window.once("ready-to-show",()=>
 	{
 		window.show();

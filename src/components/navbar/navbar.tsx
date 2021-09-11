@@ -20,11 +20,19 @@ class NavBar extends React.Component
 				</li>
 
 				<li>
-					{/* <Link className="navlink" to="/devices"> */}
+					<Link className="navlink" to="/devices">
 						<faIcons.FaAndroid className="navlink--icon"></faIcons.FaAndroid>
 						<span className="navlink--text"> Devices</span>
-					{/* </Link> */}
+					</Link>
 				</li>
+
+				<li>
+					<Link className="navlink" to="/setting">
+						<faIcons.FaCog className="navlink--icon"></faIcons.FaCog>
+						<span className="navlink--text"> Setting</span>
+					</Link>
+				</li>
+
 			</ul>
 		</nav>
 		);

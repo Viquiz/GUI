@@ -1,0 +1,122 @@
+[Sat, 11 Sep 2021 03:16:47 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:16:47 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:4343/
+[Sat, 11 Sep 2021 03:16:47 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:16:47 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:4343/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:17:35 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:17:35 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:4343/
+[Sat, 11 Sep 2021 03:17:35 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:17:35 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:4343/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:19:22 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:19:22 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:4343/
+[Sat, 11 Sep 2021 03:19:22 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:19:22 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:4343/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:21:41 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:21:41 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:14343 /
+[Sat, 11 Sep 2021 03:21:41 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:21:41 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:14343 /_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:22:10 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:22:10 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:12343 /
+[Sat, 11 Sep 2021 03:22:10 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:22:10 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:12343 /_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:23:11 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:23:11 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:12354 /
+[Sat, 11 Sep 2021 03:23:11 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:23:11 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:12354 /_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:25:49 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:25:50 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:14123 /
+[Sat, 11 Sep 2021 03:25:50 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:25:50 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:14123 /_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:28:06 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:32:20 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:32:33 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:32:54 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:32:54 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:13125 /
+[Sat, 11 Sep 2021 03:32:54 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:32:54 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:13125 /_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:33:19 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:33:19 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:4343/
+[Sat, 11 Sep 2021 03:33:19 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:33:19 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:4343/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:33:50 GMT] [warning] [<0.000.0>] port must be an integer.
+[Sat, 11 Sep 2021 03:33:50 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:4343/
+[Sat, 11 Sep 2021 03:33:50 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:33:50 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:4343/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils 301
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/ 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/css/styles-a9623008fc27e79da2388441deeacfab.css 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/js/bundle-34997e32896293a1fa5d71f79eb1b4f7.js 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 304
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET / 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-site.png 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fauxtonicon5.woff 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1631331290298 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1631331290299 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1631331290300 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1631331290301 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fontawesome-webfont.woff 200
+[Sat, 11 Sep 2021 03:34:50 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-favicon.png 200
+[Sat, 11 Sep 2021 03:35:02 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true&limit=501 200
+[Sat, 11 Sep 2021 03:35:02 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?limit=21&include_docs=true 200
+[Sat, 11 Sep 2021 03:35:02 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1631331290302 200
+[Sat, 11 Sep 2021 03:35:03 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1631331290303 200
+[Sat, 11 Sep 2021 03:35:03 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1631331290304 200
+[Sat, 11 Sep 2021 03:35:03 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1631331290305 200
+[Sat, 11 Sep 2021 03:36:03 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Sat, 11 Sep 2021 03:36:03 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:36:03 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:42:39 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:42:39 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT // 404
+[Sat, 11 Sep 2021 03:43:09 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:43:09 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT // 404
+[Sat, 11 Sep 2021 03:44:29 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:44:29 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT // 404
+[Sat, 11 Sep 2021 03:44:39 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:44:39 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT // 404
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils 301
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/ 200
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/css/styles-a9623008fc27e79da2388441deeacfab.css 200
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/js/bundle-34997e32896293a1fa5d71f79eb1b4f7.js 200
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 200
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 304
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET / 200
+[Sat, 11 Sep 2021 03:45:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-site.png 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fauxtonicon5.woff 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1631331926861 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1631331926862 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1631331926863 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1631331926864 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fontawesome-webfont.woff 200
+[Sat, 11 Sep 2021 03:45:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-favicon.png 200
+[Sat, 11 Sep 2021 03:45:28 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true&limit=501 200
+[Sat, 11 Sep 2021 03:45:28 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?limit=21&include_docs=true 200
+[Sat, 11 Sep 2021 03:45:28 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1631331926865 200
+[Sat, 11 Sep 2021 03:45:30 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1631331926866 200
+[Sat, 11 Sep 2021 03:45:30 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1631331926867 200
+[Sat, 11 Sep 2021 03:45:30 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1631331926868 200
+[Sat, 11 Sep 2021 03:45:33 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 200
+[Sat, 11 Sep 2021 03:45:33 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 200
+[Sat, 11 Sep 2021 03:45:33 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_node/node1@127.0.0.1/_config 200
+[Sat, 11 Sep 2021 03:45:38 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1631331926869 200
+[Sat, 11 Sep 2021 03:45:38 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1631331926870 200
+[Sat, 11 Sep 2021 03:45:38 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1631331926871 200
+[Sat, 11 Sep 2021 03:46:20 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:46:23 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET / 200
+[Sat, 11 Sep 2021 03:46:40 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Sat, 11 Sep 2021 03:46:40 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Sat, 11 Sep 2021 03:46:40 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Sat, 11 Sep 2021 03:46:56 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET // 404
+[Sat, 11 Sep 2021 03:46:56 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT // 404
+[Sat, 11 Sep 2021 03:48:43 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/ 404
+[Sat, 11 Sep 2021 03:48:43 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT /testdB/ 201
+[Sat, 11 Sep 2021 03:48:43 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/mittens? 404
+[Sat, 11 Sep 2021 03:48:43 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT /testdB/mittens 201
+[Sat, 11 Sep 2021 03:48:54 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/ 200
+[Sat, 11 Sep 2021 03:48:54 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/mittens? 200
+[Sat, 11 Sep 2021 03:48:54 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT /testdB/mittens 409
+[Sat, 11 Sep 2021 03:49:22 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/ 200
+[Sat, 11 Sep 2021 03:49:22 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/mittens? 200
+[Sat, 11 Sep 2021 03:49:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/ 200
+[Sat, 11 Sep 2021 03:49:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/mittens? 200
+[Sat, 11 Sep 2021 03:49:46 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/ 200
+[Sat, 11 Sep 2021 03:49:46 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /testdB/mittens? 200
