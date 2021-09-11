@@ -1,8 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {ImBook} from "react-icons/im"
+import React, { useEffect } from "react";
+import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import {FaReact} from "react-icons/fa"
-import {BsGearFill} from "react-icons/bs";
 import "./navbar.css";
 
 
@@ -13,29 +11,24 @@ import Menu from "./Menu/Menu";
 import MenuItem from "./Menu/MenuItem";
 import SideBarFooter from "./layout/SideBarFooter";
 
-
-
-
-
-
-
-const MenuItems = [{
-	id:0,
-	to:"/Home",
-	display:"Home",
-	icon: <ImBook/>
-},
-{
-	id:1,
-	to:"/Setting",
-	display:"Setting",
-	icon: <BsGearFill/>
-},
-]
-
-
-const NavBar = () => {
+const NavBar = (props:any) => {
 	const [view,setView] = React.useState(0);
+	function getItemNodes(menuItems:any)
+	{	return menuItems.filter((item:any) =>{
+			return (
+			item.display !== '' 
+			&& item.display !== null 
+			&& item.display !== undefined);
+		}).map((item:any) =>
+		{	
+			return (
+			<Link key={item.id} to={item.to}>
+				<MenuItem selected={view===item.id} icon={item.icon} onClick={()=>{setView(item.id)}}>
+				{item.display}
+				</MenuItem>
+			</Link>)
+		})
+	}
     return (
 	<SideBar Collapsible={false}>
 		<SideBarHeader  icon={FaReact}>
@@ -43,15 +36,7 @@ const NavBar = () => {
 		</SideBarHeader>
 		<SideBarContent>
 			<Menu>
-				{MenuItems.map(item =>
-					
-						<Link className="navlink" to={item.to}>
-							<MenuItem key={item.id} selected={view===item.id} icon={item.icon} onClick={()=>{ console.log(item.id);setView(item.id)}}>
-							{item.display}
-							</MenuItem>
-						</Link>
-					
-				)}
+				{getItemNodes(props.MenuItems)}
 			</Menu>
 		</SideBarContent>
 		<SideBarFooter>

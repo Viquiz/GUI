@@ -4,17 +4,28 @@
 	<head>
 		<title>Viquiz</title>
 		<link rel="stylesheet" href="%PUBLIC_URL%/assets/fonts/all.css">
-		<script src="%PUBLIC_URL%/controller.js" defer></script>
-		<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/frame.css">
+		<style>
+			body
+			{
+				overflow: hidden;
+				height: 100vh;				
+				width:100%;
+			}
+			#root
+			{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+			#root > *
+			{
+					height: 100%;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="frame">
-			<div class="frame--title">Viquiz</div>
-			<div id="minimize-btn" class="frame--btn frame--btn__hover" ><img src="./assets/images/window-control/minimize.svg" alt="minimize.png"></div>
-			<div id="unmaximize-btn" class="frame--btn frame--btn__hover hidden"><img src="./assets/images/window-control/restore-down.svg" alt="restore-down.png"></div>
-			<div id="maximize-btn" class="frame--btn frame--btn__hover"><img src="./assets/images/window-control/maximized.svg" alt="maximized"></div>
-			<div id="close-btn" class="frame--btn frame--btn__close"><img src="./assets/images/window-control/close.svg" alt="close.png"></div>
-		</div>
 		<div id="root"></div>
 	</body>
 </html>

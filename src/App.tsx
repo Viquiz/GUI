@@ -2,8 +2,9 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 // import NavBar from './components/navbar/navbar';
 import Home from './pages/home/home';
-import {Switch,Route } from "react-router-dom";
+import {Switch,Route, Redirect } from "react-router-dom";
 import PouchDB from 'pouchdb';
+import Setting from './pages/setting/Setting';
 //open or create a new DB if not ex 
 var database = new PouchDB('http://localhost:5984/testdB');
 
@@ -27,7 +28,11 @@ database.get('mittens').then(function (doc) {
 });
 
 const style = {
-	flex:1
+	flex:1,
+	height:"100%",
+	overflowY:"scroll" as "scroll" ,
+	overflowX:"hidden" as "hidden" ,
+	
 };
 
 const App= (props: any) =>
@@ -36,9 +41,17 @@ const App= (props: any) =>
 		<main style = {style}>
 			{/* {props.children} more clear*/} 
 				<Switch>				
-					<Route path="/Home" component={Home}/>
+					{/* <Route path="/Home" component={Home}/>
 					<Route path="/devices" component={Home}/>
-					<Route path="/setting" component={Home}/>
+					<Route path="/setting" component={Setting}/> */}
+					<Route exact path="/">
+						<Redirect to={`${props.MenuItems[0].to}`} />
+					</Route>
+					{props.MenuItems.map((item:any) =>
+					{
+						return <Route strict={item.strict} exact={item.exact} key={item.to} path={item.to} component={item.component}/>
+						
+					})}
 				</Switch>
 		</main>
 	);

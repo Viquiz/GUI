@@ -1,48 +1,22 @@
 import {app, BrowserWindow, globalShortcut, ipcMain} from "electron";
 import PouchDB from 'pouchdb';
 import path from "path";
-// import websql from 'websql';
-
-// var db = websql('mydb.db', '1.0', 'description', 1);
-
-
-var db = new PouchDB('./test3');
-//console.log(pouch.adapter)
-let data = {
-	_id: 'myDoc',
-	title: 'Heroes'
-  };
-
-//save to local ... who care where is it 
-db.put(data).then(function (response) {
-	// handle response
-  }).catch(function (err) {
-	console.log(err);
-  });
-
-//get data ( by _id)
-db.get('myDoc').then(function (doc) {
-	// handle doc
-	console.log("from local database");
-	console.log(doc);
-  }).catch(function (err) {
-	console.log(err);
-  });
 
 let window:BrowserWindow;
 
 app.whenReady().then(() => {
 	window = new BrowserWindow({
+		minWidth:800,
+		minHeight:800,
 		show:false,
-		frame:false,
-		//resizable:false,
+		frame:true,
 		webPreferences:{
 			preload:path.join(__dirname,'preload.js'),
 			devTools: true
 		},
 		autoHideMenuBar: true
 	});
-	window.loadURL("http://localhost:11234");
+	window.loadURL("http://localhost:3000");
 	window.once("ready-to-show",()=>
 	{
 		window.show();

@@ -13,11 +13,11 @@ const MenuItem = (props:MenuItemProps)=>
 		props.onClick();
 	}
 	return (
-		<li onClick={changeView} className={`flex justify-start items-center min-w-full ${props.selected?"selected":""} rounded-l-full ml-25px`}>
-			<span className={`w-50px h-50px flex justify-center items-center`}>
+		<li onClick={changeView} className={`select-none flex justify-start items-center min-w-full ${props.selected?"selected":""} rounded-l-full ml-25px`}>
+			<span className={`select-none w-50px h-50px flex justify-center items-center`}>
 				{props.icon}
 			</span>
-			<span className={`w-250px`}>
+			<span className={`select-none w-250px`}>
 				{props.children}
 			</span>
 		</li>
