@@ -1,42 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as faIcons from "react-icons/fa";
-import "./navbar.css"
-// https://www.npmjs.com/package/react-pro-sidebar
+import React from "react";
+import { Link } from "react-router-dom";
+import {ImBook} from "react-icons/im"
+import {FaReact} from "react-icons/fa"
+import {BsGearFill} from "react-icons/bs";
+import "./navbar.css";
 
-// import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
-class NavBar extends React.Component
+import SideBar from "./layout/Sidebar";
+import SideBarHeader from "./layout/SideBarHeader";
+import SideBarContent from "./layout/SideBarContent";
+import Menu from "./Menu/Menu";
+import MenuItem from "./Menu/MenuItem";
+import SideBarFooter from "./layout/SideBarFooter";
+
+
+
+
+
+
+
+const MenuItems = [{
+	id:0,
+	to:"/Home",
+	display:"Home",
+	icon: <ImBook/>
+},
 {
-	render() {
-		return(
-		<nav className="navbar">
-			<ul className="navlink-container border-t-2 border-b-2 border-black py-2">
-				<li>
-					<Link className="navlink" to="/Home">
-						<faIcons.FaBook className="navlink--icon"></faIcons.FaBook>
-						<span className="navlink--text"> Libraries</span>
-					</Link>
-				</li>
+	id:1,
+	to:"/Setting",
+	display:"Setting",
+	icon: <BsGearFill/>
+},
+]
 
-				<li>
-					<Link className="navlink" to="/devices">
-						<faIcons.FaAndroid className="navlink--icon"></faIcons.FaAndroid>
-						<span className="navlink--text"> Devices</span>
-					</Link>
-				</li>
 
-				<li>
-					<Link className="navlink" to="/setting">
-						<faIcons.FaCog className="navlink--icon"></faIcons.FaCog>
-						<span className="navlink--text"> Setting</span>
-					</Link>
-				</li>
-
-			</ul>
-		</nav>
-		);
-	}
+const NavBar = () => {
+	const [view,setView] = React.useState(0);
+    return (
+	<SideBar Collapsible={false}>
+		<SideBarHeader  icon={FaReact}>
+			Viquiz
+		</SideBarHeader>
+		<SideBarContent>
+			<Menu>
+				{MenuItems.map(item =>
+					
+						<Link className="navlink" to={item.to}>
+							<MenuItem key={item.id} selected={view===item.id} icon={item.icon} onClick={()=>{ console.log(item.id);setView(item.id)}}>
+							{item.display}
+							</MenuItem>
+						</Link>
+					
+				)}
+			</Menu>
+		</SideBarContent>
+		<SideBarFooter>
+			FB
+		</SideBarFooter>
+	</SideBar>
+    );
 }
 
 export default NavBar;
