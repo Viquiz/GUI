@@ -1,4 +1,4 @@
-import {ipcRenderer,contextBridge} from "electron";
+import electron, {ipcRenderer,contextBridge} from "electron";
 contextBridge.exposeInMainWorld('Driver_API',{
 	GetDeviceList: ()=> {
 			return ipcRenderer.invoke("getDevices");
@@ -18,5 +18,10 @@ contextBridge.exposeInMainWorld('BrowserWindows',{
 	},
 	close:()=>{
 		ipcRenderer.send("close");
+	},
+	eventMaximize:(callback: (data:boolean) => undefined) => {
+		ipcRenderer.on("maximize",(ev,result:boolean) => {
+			callback(result);
+		})
 	}
 })

@@ -1,3 +1,4 @@
+import { randomInt } from 'crypto';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
@@ -13,7 +14,7 @@ interface PARAMS
 {
 	id:string
 }
-let a:CardPROPS[] =[
+const a:CardPROPS[] =[
 {
 	name:"123",
 	description:"lorem",
@@ -97,16 +98,18 @@ const QuizManager: React.FC<PROPS> = (props) => {
 	const { url } = useRouteMatch();
 	
 	return (
-		<>
-		<div
-		style={{
-			height:"300px",
-			backgroundColor: "green"
-		}}>
-			Functionality
+		<div className="h-full flex flex-col justify-start">
+			<div
+			style={{
+				height:"50px",
+				backgroundColor: "green"
+			}}>
+				Functionality
+			</div>
+			<div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-5">
+				{a.map(item => <Quiz_card key={Date.now()} {...item}/>)}
+			</div>
 		</div>
-		{a.map(item => <Quiz_card {...item}/>)}
-		</>
 	);
 };
 

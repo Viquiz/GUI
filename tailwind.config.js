@@ -1,6 +1,9 @@
+let titleBar_heigh=30
+let sideBar_width=200
+
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       spacing: {
@@ -11,7 +14,18 @@ module.exports = {
         '150px': '150px',
         '200px': '200px',
         '250px': '250px',
+        titleBar:`${titleBar_heigh}px`,
+        sideBar:`${sideBar_width}px`,
       },
+      height: {
+        
+        content:`calc(100vh - ${titleBar_heigh}px)`
+      },
+      width: {
+        
+        content:`calc(100% - ${sideBar_width}px)`
+      }
+      ,      
       gridTemplateRows: {
         // Simple 8 row grid
        'fluentCard': 'repeat(30, 25px)',

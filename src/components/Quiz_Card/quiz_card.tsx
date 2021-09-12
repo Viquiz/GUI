@@ -1,8 +1,8 @@
-import "./quiz_card.css"
+import "./quiz_card.scss"
 import React from "react"
 import { Link, useRouteMatch } from "react-router-dom"
-import "./quiz_card.css"
 import { BsPlay } from "react-icons/bs"
+import { IconContext } from "react-icons"
 
 export interface CardPROPS
 {
@@ -16,7 +16,6 @@ const Quiz_card:React.FC<CardPROPS> = (props)=>
 {
 	const {url} = useRouteMatch()
 	const date = new Date(props.timesStamp)
-	console.log(date)
 	return(
 		<div className={`card border-b border-gray-500`}>
 			<div className="card--image">
@@ -30,11 +29,9 @@ const Quiz_card:React.FC<CardPROPS> = (props)=>
 					{props.description}
 				</div>
 			</div>
-			<div className="card--button" >
-				<div>
-					<BsPlay size="3x"/>
-				</div>
-			</div>
+			{/* <div className="card--button" >
+				<BsPlay size={60}/>
+			</div> */}
 			<div className="card--date">
 				{`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`}
 			</div>

@@ -8,7 +8,7 @@ import QuizManager from"./pages/quiz/QuizManager";
 import {ImBook} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
 import Setting from './pages/setting/Setting';
-
+import TitleBar from "./components/windowControl/titleBar"
 const MenuItems = [{
 	id:0,
 	to:"/Quiz",
@@ -41,9 +41,12 @@ ReactDOM.render(
 			instead of path = "/"
 		
 		*/}
+		<TitleBar title="Viquiz"/>
 		<HashRouter>
-			<NavBar MenuItems={MenuItems}/>
-			<App MenuItems={MenuItems}/>
+			<div className="h-content">
+				<NavBar MenuItems={MenuItems}/>
+				<App MenuItems={MenuItems}/>
+			</div>
 		</HashRouter>
 		</>	
 	</React.StrictMode>,

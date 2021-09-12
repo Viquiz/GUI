@@ -6,10 +6,10 @@ let window:BrowserWindow;
 
 app.whenReady().then(() => {
 	window = new BrowserWindow({
-		minWidth:800,
-		minHeight:800,
+		minWidth:900,
+		minHeight:500,
 		show:false,
-		frame:true,
+		frame:false,
 		webPreferences:{
 			preload:path.join(__dirname,'preload.js'),
 			devTools: true
@@ -22,8 +22,13 @@ app.whenReady().then(() => {
 		window.show();
 	})
 	globalShortcut.register('f5', function() {
-		console.log('f5 is pressed')
-		window.reload()
+		window.reload();
+	})
+	window.on("maximize",()=>{
+		window.webContents.send("maximize",true);
+	})
+	window.on("unmaximize",()=>{
+		window.webContents.send("maximize",false);
 	})
 	
 	

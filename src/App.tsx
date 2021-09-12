@@ -30,28 +30,23 @@ database.get('mittens').then(function (doc) {
 const style = {
 	flex:1,
 	height:"100%",
-	overflowY:"scroll" as "scroll" ,
-	overflowX:"hidden" as "hidden" ,
+	overflow:"hidden",
 	
 };
 
 const App= (props: any) =>
 {
 	return(
-		<main style = {style}>
-			{/* {props.children} more clear*/} 
+		<main className="w-content h-content ml-sideBar overflow-hidden">
 				<Switch>				
-					{/* <Route path="/Home" component={Home}/>
-					<Route path="/devices" component={Home}/>
-					<Route path="/setting" component={Setting}/> */}
-					<Route exact path="/">
-						<Redirect to={`${props.MenuItems[0].to}`} />
-					</Route>
 					{props.MenuItems.map((item:any) =>
 					{
 						return <Route strict={item.strict} exact={item.exact} key={item.to} path={item.to} component={item.component}/>
 						
 					})}
+					<Route exact path="/">
+						<Redirect to={`${props.MenuItems[0].to}`} />
+					</Route>
 				</Switch>
 		</main>
 	);

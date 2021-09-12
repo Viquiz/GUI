@@ -12,7 +12,7 @@
 	// grid-template-rows: 100px;
 	align-items: center;
 	justify-content: flex-start;
-	width:calc(35*25px);
+	width:calc(25*25px);
 	margin:0 auto;
 	font-size:small;
 	height: 60px;
@@ -53,10 +53,15 @@
 		align-items: center;
 		justify-content: center;
 		margin: 0 !important;
-		// transform-origin: 50% 50%;
+		overflow: hidden;
+		svg
+		{
+			transform-origin: center;
+		}
+		
 		&:hover{
-				& div{
-					transform:scale(1.3);
+				& svg{
+					transform:scale(1.5);
 				}
 		}
 	}
