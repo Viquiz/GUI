@@ -5,6 +5,7 @@ import {  Switch, Route, HashRouter} from 'react-router-dom';
 import "./style/tailwind.css";
 import App from "./App";
 import QuizManager from"./pages/quiz/QuizManager";
+import QuizEditor from './pages/quiz/QuizEditor';
 import {ImBook} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
 import Setting from './pages/setting/Setting';
@@ -20,6 +21,14 @@ const MenuItems = [{
 {
 	to:"/Quiz/:id",
 	component: QuizManager,
+},
+{
+	id:1,
+	to:"/Quest",
+	display:"Quest edit",
+	component: QuizEditor,
+	icon: <ImBook/>,
+	exact:true
 },
 {
 	id:2,
