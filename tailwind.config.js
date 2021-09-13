@@ -27,8 +27,11 @@ module.exports = {
       }
       ,      
       gridTemplateRows: {
-        // Simple 8 row grid
-       'fluentCard': 'repeat(30, 25px)',
+      },
+      colors:{
+        button: {
+          primary:"#ffffff"
+        }
       }
     },
   },

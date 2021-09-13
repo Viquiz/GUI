@@ -14,7 +14,6 @@
 	justify-content: flex-start;
 	width:calc(25*25px);
 	margin:0 auto;
-	font-size:small;
 	height: 60px;
 	*
 	{
@@ -35,9 +34,6 @@
 	&--info
 	{
 		flex:1;
-		&--name{
-			font-size: 1.5rem;
-		}
 		&--description
 		{
 			text-overflow: ellipsis;
