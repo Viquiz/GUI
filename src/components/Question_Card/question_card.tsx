@@ -1,7 +1,7 @@
 import React from "react"
 import {useRouteMatch } from "react-router-dom"
 
-export interface answers {
+export interface answersID {
 	[index: number]: string,
 }
 
@@ -10,10 +10,10 @@ export interface CardPROPS
 	_id: string,
 	img: string,
 	title: string,
-	answers: answers,
+	answers: answersID,
 	create: string,
 	edit:string,
-	correctAnswers: answers,
+	correctAnswers: answersID,
 	gamemode: string,
 	[k: string]: unknown
 }

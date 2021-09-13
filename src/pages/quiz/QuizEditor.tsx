@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import Question_card, { CardPROPS, answers } from '../../components/Question_Card/question_card';
+import Question_card, { CardPROPS, answersID } from '../../components/Question_Card/question_card';
 import {getAllQuestion,addQuestion,removeQuestion} from '../../database';
 
 type PROPS = 
@@ -10,52 +10,9 @@ type PROPS =
 }
 
 //render the card from db
-const a: answers = [
+const a: answersID = [
     "a", "b", "c", "d"
 ]
-
-// let b:CardPROPS[] = [
-// {
-// 	_id: "0",
-// 	img: "string",
-// 	title: "string",
-// 	answers: a,
-// 	create: "12/3/2021",
-// 	edit:"12/8/2021",
-// 	correctAnswers: a,
-// 	gamemode: "string"
-// },
-// {
-// 	_id: "1",
-// 	img: "string",
-// 	title: "string",
-// 	answers: a,
-// 	create: "12/3/2021",
-// 	edit:"12/8/2021",
-// 	correctAnswers: a,
-// 	gamemode: "string"
-// },
-// {
-// 	_id: "2",
-// 	img: "string",
-// 	title: "string",
-// 	answers: a,
-// 	create: "12/3/2021",
-// 	edit:"12/8/2021",
-// 	correctAnswers: a,
-// 	gamemode: "string"
-// }
-// ]
-
-// console.log("raw", b);
-//https://stackoverflow.com/questions/46240647/react-how-to-force-a-function-component-to-render/53837442#53837442
-//create your forceUpdate hook
-// function useForceUpdate(){
-// 	console.log("re update");
-//     const [value, setValue] = useState(0); // integer state
-//     return () => setValue(value => value + 1); // update the state to force render
-// }
-
 
 const QuizEditor: React.FC<PROPS> = (props) => {
 	
@@ -109,8 +66,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
 					<button onClick={() => removeQuest(item._id)}>
 						remove
 					</button>
-				</Question_card>)
-				)}
+				</Question_card>))}
 				<div>
 					<button onClick={() => addQuest()}>
 						Add new Question

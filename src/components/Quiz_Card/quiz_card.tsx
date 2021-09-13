@@ -4,26 +4,34 @@ import { Link, useRouteMatch } from "react-router-dom"
 import { BsPlay } from "react-icons/bs"
 import { IconContext } from "react-icons"
 
+export interface questionIDs {
+	[index: number]: string,
+}
+
 export interface CardPROPS
 {
-	name:string
+	_id: string
+	title:string
 	description:string
-	timesStamp:number
+	create:string
+	edit:string
 	Class:string
+	questions: questionIDs
 	[k: string]: unknown
 }
 const Quiz_card:React.FC<CardPROPS> = (props)=>
 {
 	const {url} = useRouteMatch()
-	const date = new Date(props.timesStamp)
+	const date = new Date(props.create)
 	return(
 		<div className={`card border-b border-gray-500`}>
+			{/* ADD moving to edit page */}
 			<div className="card--image">
 				{/* <img src="" alt="thumbnail"/> */}
 			</div>
 			<div className="card--info">
 				<div className="card--info--name">
-					{props.name}
+					{props.title}
 				</div>
 				<div className="card--info--description">
 					{props.description}
@@ -37,6 +45,10 @@ const Quiz_card:React.FC<CardPROPS> = (props)=>
 			</div>
 			<div className="card--class">
 				{props.Class}
+			</div>
+			<div>
+				{/* edit and remove button ? */}
+				{props.children}
 			</div>
 		</div>
 	)
