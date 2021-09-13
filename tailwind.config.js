@@ -30,13 +30,25 @@ module.exports = {
       },
       colors:{
         button: {
-          primary:"#ffffff"
+          primary:"rgba(52, 152, 219,1.0)",
+          disabled:"rgba(127, 140, 141,1.0)",
+          hover:"rgba(41, 128, 185,1.0)"
         }
+      },
+      boxShadow:{
+        button:"inset 0 0 5px rgba(0,0,0,0.35)"
       }
     },
   },
   variants: {
-    extend: {width: ["hover"]},
+    extend: {
+      width: ["hover"],
+      backgroundColor: ["disabled"],
+      cursor:["disabled"],
+      boxShadow: ['active'],
+      scale:['active'],
+      transform:['active']
+    },
   },
   plugins: [],
 }

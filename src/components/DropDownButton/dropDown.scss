@@ -1,0 +1,20 @@
+.animation{
+    animation: growDown 500ms ease-in forwards;
+    transform-origin: top center;
+}
+
+@keyframes growDown {
+    0% {
+       max-height: 0;
+    }
+    70% {
+       max-height: 60px;
+    }
+    100% {
+       max-height: 1000px;
+    }
+}
+
+.items{
+	height:fit-content;
+}

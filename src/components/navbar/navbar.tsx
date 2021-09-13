@@ -13,6 +13,11 @@ import SideBarFooter from "./layout/SideBarFooter";
 
 const NavBar = (props:any) => {
 	const [view,setView] = React.useState(0);
+	const match = useRouteMatch("/:route")
+	useEffect(()=>{
+		let i = (props.MenuItems as Array<any>).find(item =>match?item.to === match.url:true);
+		setView(i.id);
+	},[match]);
 	function getItemNodes(menuItems:any)
 	{	return menuItems.filter((item:any) =>{
 			return (

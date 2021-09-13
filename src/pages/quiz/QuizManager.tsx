@@ -20,79 +20,7 @@ const a:CardPROPS[] =[
 	description:"lorem",
 	timesStamp:0,
 	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:0,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:0,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:0,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
-{
-	name:"123",
-	description:"lorem",
-	timesStamp:1631384823941,
-	Class:"12a7"
-},
+}
 ]
 const QuizManager: React.FC<PROPS> = (props) => {
 	const { url } = useRouteMatch();
@@ -107,7 +35,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
 				Functionality
 			</div>
 			<div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-5">
-				{a.map(item => <Quiz_card key={Date.now()} {...item}/>)}
+				{a.map(item => <Quiz_card key={item.timesStamp} {...item}/>)}
 			</div>
 		</div>
 	);
