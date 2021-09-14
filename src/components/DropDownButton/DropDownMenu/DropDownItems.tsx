@@ -15,14 +15,13 @@ export const DropDownItems:React.FC<listPROPS> = (props)=>{
 		className="w-full h-titleBar 
 		text-left hover:bg-button-hover
 		flex justify-start items-center 
+		text-inherit
 		"
-		onClick={(e)=>{
-			props.onClick?.(e)
-		}}>
+		onClick={props.onClick}>
 			<IconContext.Provider value={{size:"1.15em",className:"mx-2"}}>
 				{props.icon?<props.icon/>:null}
 			</IconContext.Provider>
-			<span>{props.children}</span>
+			<span className="text-inherit">{props.children}</span>
 		</li>
 	);
 }

@@ -20,10 +20,12 @@ export default function Setting(props:any) {
 		disabled={false} 
 		onClick={()=>alert("123")}
 		text="filter"
+		className="text-button-primary"
 		icon={FaFilter}
-		items = {items}
 		>
-			<DropDownItems icon={FaReact}>Test</DropDownItems>
+			{items.map((item:any,index:number) =>{
+				return <DropDownItems key={index} icon={item.icon}>item.text</DropDownItems>
+			})}
 		</DropDown>
 		</>
 	)

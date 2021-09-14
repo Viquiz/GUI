@@ -12,11 +12,11 @@ export const DropDownMenu:React.FC<DropDownMenu_PROPS>= (props)=> {
 			shadow-lg
 			absolute top-full left-0
 			overflow-hidden
-			text-black
 			items
 			w-full
 			max-h-0
 			animation
+			text-inherit
 			`}>
 			{props.children}	
 		</ul>

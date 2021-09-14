@@ -12,34 +12,30 @@ interface DropDown_PROPS
 	text?:string
 	disabled?:boolean
 	style?:CSSProperties
-	items?:listPROPS[]
 	children?:ReactElement<listPROPS>
 	[key:string]:unknown
 }
 export const DropDown:React.FC<DropDown_PROPS> = (props)=>{
 
 	const [isActive,setActive] = useState<Boolean>(false)
-	function itemClick(ev:React.MouseEvent)
-	{
-		ev.stopPropagation()
-		setActive(_isActive=>!_isActive)
-	}
 	return(
 	<button style={props.style} 
-	onClick={props.items?()=>setActive(_isActive => !_isActive):()=>{}}
+	onClick={props.items?undefined:()=>setActive(_isActive => !_isActive)}
+	onBlur={()=>setActive(_isActive=> false)}
 	disabled={props.disabled} 
-	className={`bg-gray-100 
+	className={`${props.className}
+	bg-gray-100 
 	${isActive?"":"hover:bg-gray-400"}
 	h-11 inline-flex justify-center items-center 
 	disabled:cursor-default disabled:bg-button-disabled 
 	active:shadow-button
 	p-3 min-w-max 
 	border border-blue-900
-	text-black font-semibold
+	font-semibold
 	relative
 	`}>
 			<div className="flex justify-center items-center">
-				<IconContext.Provider value={{className:"mr-1"}}>
+				<IconContext.Provider value={{size:".9em",className:"mr-1"}}>
 					{props.icon?<props.icon/>:null}
 				</IconContext.Provider>
 				
