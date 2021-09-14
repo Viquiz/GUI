@@ -6,7 +6,7 @@ import "./style/tailwind.css";
 import App from "./App";
 import QuizManager from"./pages/quiz/QuizManager";
 import QuizEditor from './pages/quiz/QuizEditor';
-import {ImBook} from "react-icons/im"
+import {ImBook, ImQuestion} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
 import Setting from './pages/setting/Setting';
 import TitleBar from "./components/windowControl/titleBar"
@@ -20,15 +20,15 @@ const MenuItems = [{
 },
 {
 	to:"/Quiz/:id",
-	component: QuizManager,
+	component: QuizEditor,
 },
 {
-	id:1,
-	to:"/Quest",
-	display:"Quest edit",
+	id:1, // use for item pick
+	to:"/QuizEditor",
+	display:"All Question",
 	component: QuizEditor,
-	icon: <ImBook/>,
-	exact:true
+	icon: <ImQuestion/>,
+	// exact:true
 },
 {
 	id:2,
@@ -48,13 +48,14 @@ ReactDOM.render(
 			executable root: d:\Viquiz\viquiz.exe
 			=> url path = d:\Viquiz\ 
 			instead of path = "/"
-		
+
+		note: HashRouter added annoying # in the front of the link  
 		*/}
 		<TitleBar title="Viquiz"/>
 		<HashRouter>
 			<div className="h-content">
-				<NavBar MenuItems={MenuItems}/>
 				<App MenuItems={MenuItems}/>
+				<NavBar MenuItems={MenuItems}/>
 			</div>
 		</HashRouter>
 		</>	

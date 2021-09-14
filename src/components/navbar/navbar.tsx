@@ -16,7 +16,12 @@ const NavBar = (props:any) => {
 	const match = useRouteMatch("/:route")
 	useEffect(()=>{
 		let i = (props.MenuItems as Array<any>).find(item =>match?item.to === match.url:true);
-		setView(i.id);
+		try {
+			setView(i.id);
+		} catch (error) {
+			setView(10);
+		}
+		
 	},[match]);
 	function getItemNodes(menuItems:any)
 	{	return menuItems.filter((item:any) =>{
