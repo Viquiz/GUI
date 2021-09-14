@@ -22,17 +22,17 @@ const TitleBar:React.FC<PROPS> = (props)=>{
 					<span>{props.title}</span>
 				</div>
 				<IconContext.Provider value={{className:"absolute top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 select-none"}}>
-						<div onClick={BrowserWindow?BrowserWindow.minimize:()=>console.log("OS not supported")}
+						<div id="btn" onClick={BrowserWindow?BrowserWindow.minimize:()=>console.log("OS not supported")}
 							className="h-titleBar w-50px relative inline-block hover:bg-gray-400 hover:bg-opacity-70"
 						>
 							<VscChromeMinimize/>
 						</div>
-						<div 	onClick={BrowserWindow?BrowserWindow.maximize:()=>console.log("OS not supported")}
+						<div  id="btn"	onClick={BrowserWindow?BrowserWindow.maximize:()=>console.log("OS not supported")}
 						className="h-titleBar w-50px relative inline-block hover:bg-gray-400 hover:bg-opacity-70"
 						>
 							{maximize?<VscChromeRestore/>:<VscChromeMaximize/>}
 						</div>
-						<div onClick={BrowserWindow?BrowserWindow.close:()=>console.log("OS not supported")}
+						<div  id="btn" onClick={BrowserWindow?BrowserWindow.close:()=>console.log("OS not supported")}
 						className="h-titleBar w-50px relative inline-block hover:bg-red-600"
 						>
 							<VscChromeClose/>

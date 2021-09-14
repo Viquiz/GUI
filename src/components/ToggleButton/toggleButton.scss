@@ -1,0 +1,17 @@
+.ToggleButton_animation{
+	animation: toggle 100ms linear forwards;
+}
+.ToggleButton_animationR{
+	animation: toggle 100ms linear forwards;
+  	animation-direction: reverse;
+}
+
+
+@keyframes toggle{
+	from{
+		left:0.25em;
+	}
+	to{
+		left:calc(100% - 1em);
+	}
+}

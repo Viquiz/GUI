@@ -24,31 +24,40 @@ export const DropDown:React.FC<DropDown_PROPS> = (props)=>{
 	onBlur={()=>setActive(_isActive=> false)}
 	disabled={props.disabled} 
 	className={`${props.className}
-	bg-gray-100 
-	${isActive?"":"hover:bg-gray-400"}
+	align-middle
 	h-11 inline-flex justify-center items-center 
 	disabled:cursor-default disabled:bg-button-disabled 
 	active:shadow-button
-	p-3 min-w-max 
+	min-w-max 
 	border border-blue-900
 	font-semibold
 	relative
 	`}>
-			<div className="flex justify-center items-center">
+			<div 
+			className={`
+			p-3
+			h-full
+			w-full
+			flex justify-center items-center
+			hover:bg-opacity-20
+			${isActive?"":"hover:bg-gray-900"}
+			`}>
 				<IconContext.Provider value={{size:".9em",className:"mr-1"}}>
 					{props.icon?<props.icon/>:null}
 				</IconContext.Provider>
 				
 				<div className="pointer-events-none w-fit mr-1">
-					{props.text?props.text:""}
+					{props.text ||""}
 				</div>
 				<IconContext.Provider value={{className:""}}>
 					<VscChevronDown/>
 				</IconContext.Provider>
 			</div>
-			{isActive?<DropDownMenu>
+			{isActive?
+			<DropDownMenu>
 				{props.children}
-			</DropDownMenu>:null}
+			</DropDownMenu>
+			:null}
 			
 	</button>
 	)

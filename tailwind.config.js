@@ -7,7 +7,16 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '25px': '25px',
+        '1px': '1px',
+        '2px': '2px',
+        '3px': '3px',
+        '4px': '4px',
+        '5px': '5px',
+        '6px': '6px',
+        '7px': '7px',
+        '8px': '8px',
+        '9px': '9px',
+        '10px':'10px',
         '50px': '50px',
         '75px': '75px',
         '100px': '100px',
@@ -30,7 +39,7 @@ module.exports = {
       },
       colors:{
         button: {
-          primary:"rgba(52, 152, 219,1.0)",
+          primary:"rgba(0, 120, 212,1.0)",
           disabled:"rgba(127, 140, 141,1.0)",
           hover:"rgba(41, 128, 185,1.0)"
         }
