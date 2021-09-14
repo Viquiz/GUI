@@ -12,7 +12,7 @@ export interface listPROPS
 export const DropDownItems:React.FC<listPROPS> = (props)=>{
 	return(	
 		<li
-		className={`w-full h-titleBar
+		className={`min-w-max h-titleBar
 		font-normal
 		${props.className || ""}
 		`}
@@ -27,7 +27,7 @@ export const DropDownItems:React.FC<listPROPS> = (props)=>{
 				<IconContext.Provider value={{size:"0.9em",className:"mx-2"}}>
 					{props.icon?<props.icon/>:null}
 				</IconContext.Provider>
-				<span className="text-inherit">{props.children}</span>
+				<span className="text-inherit mr-2">{props.children}</span>
 			</div>
 		</li>
 	);

@@ -7,18 +7,18 @@ interface DropDownMenu_PROPS{
 
 export const DropDownMenu:React.FC<DropDownMenu_PROPS>= (props)=> {
 	return (
-		<div
+		<ul
 			className={`
 			shadow-lg
 			absolute top-full left-0
 			overflow-hidden
 			items
-			w-full
+			m-w-max
 			max-h-0
 			animation
 			text-inherit
 			`}>
 			{props.children}	
-		</div>
+		</ul>
 	)
 }

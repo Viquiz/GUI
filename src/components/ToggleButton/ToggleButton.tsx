@@ -9,20 +9,18 @@ interface ToggleBtnPROPS
 	onToggle?: (value:boolean) => any
 	[key:string]:unknown
 }
-const circle = {
-	radius: 0
-}
+
 const ToggleButton:React.FC<ToggleBtnPROPS> = (props) => {
 	const [value,setValue] = useState<boolean>(Boolean(props.disabled))
 	
 	const firstMount = useRef<boolean>(true)
 	useEffect(()=>{
-		console.log(firstMount.current)
 		if(!firstMount.current)
 		{			
+			props.onToggle?.(value)
 		}
 		else{
-			firstMount.current = false;
+			firstMount.current = false
 		}
 		
 	},[value])

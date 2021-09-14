@@ -11,7 +11,6 @@ interface DropDown_PROPS
 	icon?:IconType
 	text?:string
 	disabled?:boolean
-	style?:CSSProperties
 	children?:ReactElement<listPROPS>
 	[key:string]:unknown
 }
@@ -19,7 +18,7 @@ export const DropDown:React.FC<DropDown_PROPS> = (props)=>{
 
 	const [isActive,setActive] = useState<Boolean>(false)
 	return(
-	<button style={props.style} 
+	<button
 	onClick={props.items?undefined:()=>setActive(_isActive => !_isActive)}
 	onBlur={()=>setActive(_isActive=> false)}
 	disabled={props.disabled} 
@@ -55,7 +54,7 @@ export const DropDown:React.FC<DropDown_PROPS> = (props)=>{
 			</div>
 			{isActive?
 			<DropDownMenu>
-				{props.children}
+					{props.children}
 			</DropDownMenu>
 			:null}
 			

@@ -56,7 +56,8 @@ module.exports = {
       cursor:["disabled"],
       boxShadow: ['active'],
       scale:['active'],
-      transform:['active']
+      transform:['active'],
+      borderWidth: ['hover', 'focus-within'],
     },
   },
   plugins: [],

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFilter, FaReact } from 'react-icons/fa'
 import { Route } from 'react-router-dom'
 import Button from '@components/button/button'
 import {DropDown,DropDownItems} from '@components/DropDownButton/DropDownButton'
 import {ToggleButton} from '@components/ToggleButton/ToggleButton'
+import { SearchBox } from '@components/SearchBox/SearchBox'
 
 const items:any =[{
 	icon:FaFilter,
@@ -14,30 +15,29 @@ const items:any =[{
 	text:"Test"
 },]
 export default function Setting(props:any) {
-	return (<div className="align-top">
+	const [test,setTest] = useState("")
+	return (<div className="align-top w-full">
 		<DropDown 
-		style={{width:"fit-content !important"}} 
-		disabled={false} 
-		onClick={()=>alert("123")}
+		disabled={false}
 		text="filter"
 		className="text-black bg-pink-500"
 		icon={FaFilter}
-		>
-			
-			<ul className="text-button-primary">
+		>	
 				{items.map((item:any,index:number) =>{
-					return <DropDownItems key={index} icon={item.icon}>{item.text}</DropDownItems>
+					return <DropDownItems key={index} icon={item.icon}> {item.text} </DropDownItems>
 				})}
-			</ul>
+			
 		</DropDown>
 		<Button disabled={false} className="bg-button-primary" text="Click me" onClick={(ev)=> {
-			alert("clicked")
+			alert(test)
 		} }/>
-		<ToggleButton onToggle={(value:boolean)=>{ alert(value)}} 
+		<ToggleButton onToggle={(value:boolean)=>{ setTest(value.toString())}} 
 		label={'Hello'}
 		label_off={'off'}
-		
 		/>
+		<SearchBox callback={(value)=>{
+			setTest(_test=> value)
+		}} icon={FaReact} placeholder="Search" className="w-36"/>
 		</div>
 	)
 }

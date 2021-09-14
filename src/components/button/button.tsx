@@ -2,7 +2,6 @@ import React, { CSSProperties, useEffect, useRef } from 'react'
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 interface Button_PROPS
 {
-	style?:CSSProperties
 	disabled?:boolean
 	text?:string
 	onClick:React.MouseEventHandler
@@ -15,7 +14,7 @@ const Button:React.FC<Button_PROPS> = (props) => {
 	},[])
 
 	return (
-		<button style={props.style} onClick={props.onClick} disabled={props.disabled} ref={btn} 
+		<button onClick={props.onClick} disabled={props.disabled} ref={btn} 
 		className={`
 		${props.disabled?"pointer-events-none":""}
 		${props.className || ""}
