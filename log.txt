@@ -336,3 +336,29 @@
 [Tue, 14 Sep 2021 10:11:01 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/_all_docs?include_docs=true&attachments=true 200
 [Tue, 14 Sep 2021 10:11:17 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/_all_docs?include_docs=true&attachments=true 200
 [Tue, 14 Sep 2021 10:11:18 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 10:47:32 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Tue, 14 Sep 2021 10:47:32 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Tue, 14 Sep 2021 10:47:32 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Tue, 14 Sep 2021 10:48:07 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/ 200
+[Tue, 14 Sep 2021 10:48:07 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/_all_docs?include_docs=true&attachments=true 304
+[Tue, 14 Sep 2021 10:48:57 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 304
+[Tue, 14 Sep 2021 10:48:57 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/ 200
+[Tue, 14 Sep 2021 10:48:57 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 10:49:15 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/_all_docs?include_docs=true&attachments=true 304
+[Tue, 14 Sep 2021 12:35:19 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 12:35:23 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/_all_docs?include_docs=true&attachments=true 304
+[Tue, 14 Sep 2021 12:35:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 304
+[Tue, 14 Sep 2021 12:35:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 12:37:13 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT /question/1631623032449 201
+[Tue, 14 Sep 2021 12:37:13 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 200
+[Tue, 14 Sep 2021 12:37:13 GMT] [info] [<0.000.0>] 127.0.0.1 - - PUT /questionSet/1631611454834 201
+[Tue, 14 Sep 2021 12:37:13 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 200
+[Tue, 14 Sep 2021 12:37:13 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 12:37:15 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/1631623032449? 200
+[Tue, 14 Sep 2021 12:37:15 GMT] [info] [<0.000.0>] 127.0.0.1 - - DELETE /question/1631623032449?rev=1-389ec5e663411636855952fccb52ef6a 200
+[Tue, 14 Sep 2021 12:37:15 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 200
+[Tue, 14 Sep 2021 12:37:15 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
+[Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/ 200
+[Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /questionSet/1631611454834? 200
+[Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/ 200
+[Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
