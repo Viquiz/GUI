@@ -1,64 +1,73 @@
-import React, {useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import Question_card, { CardPROPS, answersID } from '../../components/Question_Card/question_card';
-import {getAllQuestion,addQuestion,removeQuestion} from '../../database';
+import React, { useEffect, useState } from 'react';
+import { useRouteMatch, useParams } from 'react-router-dom';
+import Question_card, { CardPROPS } from '../../components/Question_Card/question_card';
+import { getAllQuestion,getQuestionsByQuestionSet, addQuestion, removeQuestion, addQuestionToQuestionSet} from '../../database';
 
-type PROPS = 
-{
-	t:string,
-	[k: string]: unknown
-}
+type PROPS =
+	{
+		t: string,
+		[k: string]: unknown
+	}
 
-//render the card from db
-const a: answersID = [
-    "a", "b", "c", "d"
-]
+export interface MatchParams {
+	id: string;
+	}
 
 const QuizEditor: React.FC<PROPS> = (props) => {
 	
 
+	let match = useRouteMatch<MatchParams>("/QuizEditor/:id");
+	let id = match?.params.id;
+	console.log("id", id);
 	const [value, setValue] = useState<CardPROPS[]>([]);
-	
-	// setValue(getAllQuestion);
-	
 
-	const { url } = useRouteMatch();
 	const reloadDB = () => {
-		let questionData:CardPROPS[] = getAllQuestion(()=>{setValue(()=>questionData);});
+		if(id === undefined){
+			let questionData: CardPROPS[] = getAllQuestion(() => { setValue(() => questionData); });
+		}else{
+			let questionData: CardPROPS[] = getQuestionsByQuestionSet(id,() => { setValue(() => questionData); });
+		}
 	}
 	//https://alexsidorenko.com/blog/react-infinite-loop/
+	// note: do not remove [] ... or every thing go ....
 	useEffect(() => {
 		reloadDB();
-	  }, [])
-	
+	}, []) 
+
 	const addQuest = () => {
 		let t: CardPROPS = {
 			_id: String((new Date()).getTime()),
 			img: "",
 			title: "new question ",
-			answers: a,
+			answers: [],
 			create: (new Date()).toJSON(),
 			edit: (new Date()).toJSON(),
-			correctAnswers: a,
-			gamemode: "normal"	
+			correctAnswers: [],
+			gamemode: "normal"
 		}
-		// b.push(t);
-		addQuestion(t, reloadDB);
-		// setTimeout(useForceUpdate,500);
+		
+		if(id === undefined){
+			//add question to set
+			addQuestion(t, reloadDB);
+			
+		}else{
+			addQuestion(t,()=>{
+				addQuestionToQuestionSet(t._id,id as string,reloadDB);
+			});
+		}
 	};
 
-	const removeQuest = (_id:string) => {
+	const removeQuest = (_id: string) => {
 		removeQuestion(_id, reloadDB);
-		// addQuestion(t, ()=> {let questionData:CardPROPS[] = getAllQuestion(()=>{setValue(()=>questionData);});});
 	}
 
 	return (
 		<div className="h-full flex flex-col justify-start">
 			<div
-			style={{
-				height:"50px",
-				backgroundColor: "green"
-			}}>
+				style={{
+					height: "50px",
+					backgroundColor: "green"
+				}}>
 				Questions
 			</div>
 			<div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-5">

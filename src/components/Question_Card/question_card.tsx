@@ -1,29 +1,28 @@
 import React from "react"
-import {useRouteMatch } from "react-router-dom"
+import { useRouteMatch } from "react-router-dom"
 
-export interface answersID {
+export interface answers {
 	[index: number]: string,
 }
 
-export interface CardPROPS
-{
+export interface CardPROPS {
 	_id: string,
+	_rev?: string,
 	img: string,
 	title: string,
-	answers: answersID,
+	answers: answers,
 	create: string,
-	edit:string,
-	correctAnswers: answersID,
+	edit: string,
+	correctAnswers: answers,
 	gamemode: string,
 	[k: string]: unknown
 }
 
-const Question_card:React.FC<CardPROPS> = (props)=>
-{
-	const {url} = useRouteMatch();
+const Question_card: React.FC<CardPROPS> = (props) => {
+	const { url } = useRouteMatch();
 	const createDate = new Date(props.create);
 	const editDate = new Date(props.edit);
-	return(
+	return (
 		<div className={`card border-b border-gray-500`}>
 			<div className="card--image">
 				{/* <img src="" alt="thumbnail"/> */}
@@ -38,11 +37,11 @@ const Question_card:React.FC<CardPROPS> = (props)=>
 				</div>
 			</div>
 			<div className="card--date">
-				Created {`${createDate.getDate()}/${createDate.getMonth()+1}/${createDate.getFullYear()}`}
+				Created {`${createDate.getDate()}/${createDate.getMonth() + 1}/${createDate.getFullYear()}`}
 			</div>
 
 			<div className="card--date">
-				Edited {`${editDate.getDate()}/${editDate.getMonth()+1}/${editDate.getFullYear()}`}
+				Edited {`${editDate.getDate()}/${editDate.getMonth() + 1}/${editDate.getFullYear()}`}
 			</div>
 
 			{/* <button className="card--info border-gray-500">

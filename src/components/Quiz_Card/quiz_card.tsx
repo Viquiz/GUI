@@ -11,6 +11,7 @@ export interface questionIDs {
 export interface CardPROPS
 {
 	_id: string
+	_rev?: string
 	title:string
 	description:string
 	create:string
