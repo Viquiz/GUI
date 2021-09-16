@@ -19,15 +19,20 @@ const MenuItems = [{
 	exact:true
 },
 {
+	id:10,
 	to:"/Quiz/:id",
 	component: QuizEditor,
 },
 {
-	id:1, // use for item pick
+	id:1,
 	to:"/QuizEditor",
 	display:"All Question",
 	component: QuizEditor,
 	icon: <ImQuestion/>,
+<<<<<<< HEAD
+=======
+	exact:true
+>>>>>>> 17516755976e8b7aae93de3c0199af9ed4b6373c
 },
 {
 	id:2,

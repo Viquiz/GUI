@@ -25,4 +25,7 @@ yarn.lock
 
 # database 
 /localDB
+
+#orther :)
 log.txt
+.editorconfig
