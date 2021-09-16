@@ -1,5 +1,5 @@
 import { values } from '@fluentui/utilities'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IconContext, IconType } from 'react-icons'
 import { VscSearch } from 'react-icons/vsc'
 
@@ -21,7 +21,7 @@ const SearchBox:React.FC<SearchBoxProps> = (props) => {
 		className={`
 		${props.className || ""}
 		align-middle
-		h-9
+		h-11
 		inline-flex
 		justify-start
 		items-center
@@ -30,12 +30,12 @@ const SearchBox:React.FC<SearchBoxProps> = (props) => {
 		focus-within:border-button-primary
 		`} >
 			<IconContext.Provider value={{className:`${focus?"w-0":""} duration-200 my-1 mx-2`}}>
-			{props.icon?<props.icon/>:<VscSearch/>}
+			{props.icon?<props.icon/>:undefined}
 			</IconContext.Provider>
 		
 		<input onChange={(e)=>{
 			props.callback?.(e.target.value)
-		}} className="w-28 outline-none border-box"
+		}} className="ml-3 flex-1 outline-none border-box"
 		type="text" placeholder={props.placeholder}/>
 		</div>
 	)

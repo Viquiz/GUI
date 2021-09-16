@@ -43,7 +43,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
 			create: (new Date()).toJSON(),
 			edit: (new Date()).toJSON(),
 			correctAnswers: [],
-			gamemode: "normal"
+			gameMode: "normal"
 		}
 		
 		if(id === undefined){

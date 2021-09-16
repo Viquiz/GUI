@@ -4,11 +4,11 @@ import React from "react";
 const SideBar = (props:any) => {
 	function isCollapsible() {
 		if(props.Collapsible)
-			return "w-75px hover:w-200px";
-		return "w-200px";
+			return "w-14 hover:w-64";
+		return "w-64";
 	}
 	return (
-		<nav className={`text-white overflow-hidden ${isCollapsible()} bg-gray-700  duration-300 flex flex-col h-content fixed top-titleBar left-0`}>
+		<nav className={`pl-2  text-white overflow-hidden ${isCollapsible()} bg-gray-700  duration-300 flex flex-col h-content`}>
 			{props.children}
 		</nav>
 	);

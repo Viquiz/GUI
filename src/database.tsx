@@ -2,7 +2,7 @@ import { promises } from 'dns';
 import PouchDB from 'pouchdb';
 // to do : remove this ????
 import { CardPROPS as Question } from './components/Question_Card/question_card';
-import { CardPROPS as QuestionSet, questionIDs} from './components/Quiz_Card/quiz_card';
+import { CardPROPS as QuestionSet, questionIDs} from './components/Quiz_Card';
 
 //load all db via HTTP if fail ... auto load local
 var questionDB = new PouchDB('http://localhost:5984/question');

@@ -4,12 +4,12 @@ import NavBar from './components/navbar/navbar';
 import {  Switch, Route, HashRouter} from 'react-router-dom';
 import "./style/tailwind.css";
 import App from "./App";
-import QuizManager from"./pages/quiz/QuizManager";
-import QuizEditor from './pages/quiz/QuizEditor';
+import QuizManager from"@pages/quiz/QuizManager";
+import QuizEditor from '@pages/quiz/QuizEditor';
 import {ImBook, ImQuestion} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
-import Setting from './pages/setting/Setting';
-import TitleBar from "./components/windowControl/titleBar"
+import Setting from '@pages/setting/Setting';
+import TitleBar from "@components/windowControl"
 const MenuItems = [{
 	id:0,
 	to:"/Quiz",
@@ -28,7 +28,6 @@ const MenuItems = [{
 	display:"All Question",
 	component: QuizEditor,
 	icon: <ImQuestion/>,
-	// exact:true
 },
 {
 	id:2,
@@ -53,9 +52,9 @@ ReactDOM.render(
 		*/}
 		<TitleBar title="Viquiz"/>
 		<HashRouter>
-			<div className="h-content">
-				<App MenuItems={MenuItems}/>
+			<div className="h-content flex justify-start items-center">
 				<NavBar MenuItems={MenuItems}/>
+				<App MenuItems={MenuItems}/>
 			</div>
 		</HashRouter>
 		</>	

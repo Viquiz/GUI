@@ -14,7 +14,7 @@ export interface CardPROPS {
 	create: string,
 	edit: string,
 	correctAnswers: answers,
-	gamemode: string,
+	gameMode: string,
 	[k: string]: unknown
 }
 
@@ -50,7 +50,7 @@ const Question_card: React.FC<CardPROPS> = (props) => {
 			{props.children}
 
 			<div className="card--gamemode">
-				{props.gamemode}
+				{props.gameMode}
 			</div>
 		</div>
 	)

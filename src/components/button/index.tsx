@@ -1,9 +1,11 @@
 import React, { CSSProperties, useEffect, useRef } from 'react'
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { IconType } from 'react-icons';
 interface Button_PROPS
 {
 	disabled?:boolean
 	text?:string
+	icon?:IconType
 	onClick:React.MouseEventHandler
 	[key: string]:unknown
 }
@@ -19,12 +21,10 @@ const Button:React.FC<Button_PROPS> = (props) => {
 		${props.disabled?"pointer-events-none":""}
 		${props.className || ""}
 		align-middle
-		h-11 
 		disabled:cursor-default disabled:bg-button-disabled 
 		active:shadow-button 
-		 rounded-sm
+		rounded-sm
 		min-w-min
-		w-100px
 		`}>
 			<div className={`
 			${props.disabled?"pointer-events-none":""}
@@ -32,7 +32,7 @@ const Button:React.FC<Button_PROPS> = (props) => {
 			inline-flex justify-center items-center 
 			hover:bg-opacity-20
 			hover:bg-gray-900
-			`}><span className="align-middle">{props.text?props.text:""}</span></div>
+			`}><span>{props.text?props.text:""}</span>{props.icon && <props.icon/>}</div>
 		</button>
 		// <PrimaryButton text="Standard" onClick={()=>alert("click")} allowDisabledFocus disabled={false} checked={false}/>
 	);

@@ -12,13 +12,14 @@ export interface listPROPS
 export const DropDownItems:React.FC<listPROPS> = (props)=>{
 	return(	
 		<li
-		className={`min-w-max h-titleBar
+		className={`min-w-max h-10
 		font-normal
 		${props.className || ""}
 		`}
 		onClick={props.onClick}>
 			<div className="
 			p-1
+			h-full
 			hover:bg-opacity-20
 			hover:bg-gray-900
 			flex justify-start items-center 

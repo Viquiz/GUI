@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaFilter, FaReact } from 'react-icons/fa'
-import { Route } from 'react-router-dom'
-import Button from '@components/button/button'
-import {DropDown,DropDownItems} from '@components/DropDownButton/DropDownButton'
-import {ToggleButton} from '@components/ToggleButton/ToggleButton'
-import { SearchBox } from '@components/SearchBox/SearchBox'
+import Button from '@components/button'
+import {DropDown,DropDownItems} from '@components/DropDownButton'
+import {ToggleButton} from '@components/ToggleButton'
+import { SearchBox } from '@components/SearchBox'
+import { CheckBox } from '@components/CheckBox'
+import { iQuestion, QuestionCard, questionType } from '@components/QuestionCard'
 
 const items:any =[{
 	icon:FaFilter,
@@ -38,6 +39,14 @@ export default function Setting(props:any) {
 		<SearchBox callback={(value)=>{
 			setTest(_test=> value)
 		}} icon={FaReact} placeholder="Search" className="w-36"/>
+		<CheckBox onChange={()=>{}} label="123" labelLeft/>
+		<QuestionCard question={{
+			question: 'Đây là câu hỏi 1234:',
+			type: questionType.multipleChoice,
+			correctAnswer: 'A',
+			wrongAnswers: ['B','C','B','C','B','C','B','C','B','C','B','C',],
+			total:1
+		}} />
 		</div>
 	)
 }
