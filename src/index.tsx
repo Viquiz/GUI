@@ -29,10 +29,6 @@ const MenuItems = [{
 	display:"All Question",
 	component: QuizEditor,
 	icon: <ImQuestion/>,
-<<<<<<< HEAD
-=======
-	exact:true
->>>>>>> 17516755976e8b7aae93de3c0199af9ed4b6373c
 },
 {
 	id:2,

@@ -653,3 +653,6 @@
 [Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /question/ 200
 [Tue, 14 Sep 2021 12:37:53 GMT] [info] [<0.000.0>] 127.0.0.1 - - POST /question/_all_docs?include_docs=true&attachments=true 200
 >>>>>>> 17516755976e8b7aae93de3c0199af9ed4b6373c
+[Thu, 16 Sep 2021 08:37:31 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Thu, 16 Sep 2021 08:37:31 GMT] [info] [<0.000.0>] database files will be saved to ./localDB
+[Thu, 16 Sep 2021 08:37:31 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
