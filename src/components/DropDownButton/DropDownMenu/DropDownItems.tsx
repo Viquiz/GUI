@@ -14,7 +14,7 @@ export const DropDownItems:React.FC<listPROPS> = (props)=>{
 		<li
 		className={`min-w-max h-10
 		font-normal
-		${props.className || ""}
+		${props.className ?? ""}
 		`}
 		onClick={props.onClick}>
 			<div className="

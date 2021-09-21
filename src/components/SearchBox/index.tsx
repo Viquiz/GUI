@@ -19,7 +19,7 @@ const SearchBox:React.FC<SearchBoxProps> = (props) => {
 		onBlur={()=>{setFocus(false)}}
 		onFocus={()=>{setFocus(true)}}
 		className={`
-		${props.className || ""}
+		${props.className ?? ""}
 		align-middle
 		h-11
 		inline-flex

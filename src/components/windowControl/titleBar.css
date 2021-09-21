@@ -1,0 +1,11 @@
+.titleBar {
+  -webkit-app-region: drag;
+}
+
+.titleBar #btn {
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

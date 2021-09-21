@@ -1,5 +1,5 @@
 let titleBar_heigh=30
-let sideBar_width=200
+let sideBar_width=170
 
 module.exports = {
   purge: [],
@@ -23,6 +23,8 @@ module.exports = {
         '150px': '150px',
         '200px': '200px',
         '250px': '250px',
+        '700px': '700px',
+        '800px': '800px',
         titleBar:`${titleBar_heigh}px`,
         sideBar:`${sideBar_width}px`,
       },
@@ -30,6 +32,14 @@ module.exports = {
         
         content:`calc(100vh - ${titleBar_heigh}px)`
       },
+      minHeight: {
+        '14': '14em',
+        '16': '16em',
+        '20': '20em',
+        '24': '24em',
+        '26': '6rem',
+        '1/2': '50%',
+       },
       width: {
         
         content:`calc(100% - ${sideBar_width}px)`

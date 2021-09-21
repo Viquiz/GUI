@@ -1,0 +1,36 @@
+.animation {
+  -webkit-animation: growDown 100ms ease-in forwards;
+          animation: growDown 100ms ease-in forwards;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}
+
+@-webkit-keyframes growDown {
+  0% {
+    max-height: 0;
+  }
+  70% {
+    max-height: 60px;
+  }
+  100% {
+    max-height: 1000px;
+  }
+}
+
+@keyframes growDown {
+  0% {
+    max-height: 0;
+  }
+  70% {
+    max-height: 60px;
+  }
+  100% {
+    max-height: 1000px;
+  }
+}
+
+.items {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}

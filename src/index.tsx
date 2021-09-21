@@ -10,6 +10,7 @@ import {ImBook, ImQuestion} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
 import Setting from '@pages/setting/Setting';
 import TitleBar from "@components/windowControl"
+import { QuestionManager } from '@pages/QuestionManager';
 const MenuItems = [{
 	id:0,
 	to:"/Quiz",
@@ -31,6 +32,13 @@ const MenuItems = [{
 	icon: <ImQuestion/>,
 },
 {
+	id:3,
+	to:"/QuestionManager",
+	display:"Questions",
+	component: QuestionManager,
+	icon: <ImQuestion/>,
+},
+{
 	id:2,
 	to:"/Setting",
 	display:"Setting",
@@ -40,7 +48,6 @@ const MenuItems = [{
 ]
 ReactDOM.render(
 	<React.StrictMode>
-		<>
 		{/* 
 		HashRouter instead of BrowserRouter
 		BrowserRouter use with file protocol has different path base on where the application is located.
@@ -58,7 +65,6 @@ ReactDOM.render(
 				<App MenuItems={MenuItems}/>
 			</div>
 		</HashRouter>
-		</>	
 	</React.StrictMode>,
 	document.getElementById('root')
   );

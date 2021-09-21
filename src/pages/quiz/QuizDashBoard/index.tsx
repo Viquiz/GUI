@@ -4,11 +4,11 @@ interface PROPS
 {
 	[key:string]: unknown;
 }
-const Quiz:React.FC<PROPS> = (props)=>
+const QuizDashBoard:React.FC<PROPS> = (props)=>
 {
 	return (
 		<p></p>
 	)
 }
 
-export default Quiz;
+export default QuizDashBoard;

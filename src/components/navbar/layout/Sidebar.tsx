@@ -4,7 +4,7 @@ import React from "react";
 const SideBar = (props:any) => {
 	function isCollapsible() {
 		if(props.Collapsible)
-			return "w-14 hover:w-64";
+			return "w-14 hover:w-sideBar";
 		return "w-64";
 	}
 	return (

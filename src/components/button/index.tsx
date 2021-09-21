@@ -1,13 +1,14 @@
 import React, { CSSProperties, useEffect, useRef } from 'react'
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { IconType } from 'react-icons';
-interface Button_PROPS
+export interface Button_PROPS
 {
 	disabled?:boolean
 	text?:string
 	icon?:IconType
 	onClick:React.MouseEventHandler
-	[key: string]:unknown
+	className?:string
+	//[key: string]:unknown
 }
 const Button:React.FC<Button_PROPS> = (props) => {
 	const btn = useRef<HTMLButtonElement|null>(null)
@@ -16,10 +17,10 @@ const Button:React.FC<Button_PROPS> = (props) => {
 	},[])
 
 	return (
-		<button onClick={props.onClick} disabled={props.disabled} ref={btn} 
+		<button onClick={(ev)=>{ev.preventDefault();props.onClick(ev)}} disabled={props.disabled} ref={btn} 
 		className={`
 		${props.disabled?"pointer-events-none":""}
-		${props.className || ""}
+		${props.className ?? ""}
 		align-middle
 		disabled:cursor-default disabled:bg-button-disabled 
 		active:shadow-button 
@@ -32,9 +33,12 @@ const Button:React.FC<Button_PROPS> = (props) => {
 			inline-flex justify-center items-center 
 			hover:bg-opacity-20
 			hover:bg-gray-900
-			`}><span>{props.text?props.text:""}</span>{props.icon && <props.icon/>}</div>
+			`}>
+				{props.icon?<props.icon/>:undefined}
+				{props.text && props.text !==""?<span className={`${props.icon?"ml-2":""}`}>{props.text}</span>:undefined}
+			</div>
 		</button>
 		// <PrimaryButton text="Standard" onClick={()=>alert("click")} allowDisabledFocus disabled={false} checked={false}/>
 	);
 }	
-export default Button
+export { Button }

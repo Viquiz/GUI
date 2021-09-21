@@ -16,7 +16,8 @@ module.exports = {
 		    aliases: {
 		      "@components": "./src/components",
 		      "@pages": "./src/pages",
-		      "@style": "./src/style"
+		      "@style": "./src/style",
+		      "@common": "./src/common",
 		    },
 		    debug:false
 		  }

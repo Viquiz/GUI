@@ -15,48 +15,42 @@ import {
     removeQuestionSet,
 } from "../../database";
 
-import Button from "@components/button";
+import {Button} from "@components/button";
+import { useAsync } from "@common/customHook";
 
 type PROPS = {
     t: string;
     [k: string]: unknown;
 };
 
+
+// const exq: questionIDs = [
+// 	"1234", "12112"
+// ]
 let templateCardPROPS: CardPROPS = {
     _id: String(new Date().getTime()),
     title: "new set",
     description: "idk",
     create: new Date().toJSON(),
     edit: new Date().toJSON(),
-    Class: "unknow",
+    Class: "unknown",
     questions: [],
 };
-// const exq: questionIDs = [
-// 	"1234", "12112"
-// ]
-
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
-    const [value, setValue] = useState<CardPROPS[]>([]);
-    const reloadDB = () => {
-        //look silly ...
-        let data: CardPROPS[] = getAllQuestionSet(() => {
-            setValue(() => data);
-        });
-    };
-    useEffect(() => {
-        reloadDB();
-    }, []);
+
+    const {loading,value,error,trigger} = useAsync(getAllQuestionSet);
     const addSet = () => {
-        // b.push(t);
-        putQuestionSet(templateCardPROPS, reloadDB);
-        // setTimeout(useForceUpdate,500);
+        
+        putQuestionSet(templateCardPROPS).then(()=> trigger()).catch(console.log)
     };
     const removeQuest = (_id: string) => {
-        removeQuestionSet(_id, reloadDB);
-        // addQuestion(t, ()=> {let questionData:CardPROPS[] = getAllQuestion(()=>{setValue(()=>questionData);});});
+        removeQuestionSet(_id).then(()=> trigger())
     };
 
+    useEffect(()=>{
+		console.log(error);
+	},[error])
     return (
         <div className="h-full flex flex-col justify-start">
             <div
@@ -68,7 +62,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                 Functionality
             </div>
             <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                {value.map((item) => (
+                {value?(value as CardPROPS[]).map((item) => (
                     <Quiz_card key={item._id} {...item}>
                         <Button
                             disabled={false}
@@ -76,15 +70,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                             text="Play"
                             onClick={() => alert("no")}
                         />
-
-                        {/* passing id via link */}
-                        {/* <Button
-                            disabled={false}
-                            className="bg-button-primary"
-                            text="" onClick = {()=>{}}> */}
                         <Link to={`/Quiz/${item._id}`}>edit</Link>
-                        {/* </Button> */}
-                        {/* add promp and redo in 30s*/}
                         <Button
                             disabled={false}
                             className="bg-button-primary"
@@ -92,7 +78,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                             onClick={() => removeQuest(item._id)}
                         />
                     </Quiz_card>
-                ))}
+                )):loading?"loading":"finish"}
             </div>
             <div
                 style={{

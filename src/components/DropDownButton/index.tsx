@@ -46,7 +46,7 @@ export const DropDown:React.FC<DropDown_PROPS> = (props)=>{
 				</IconContext.Provider>
 				
 				<div className="pointer-events-none w-fit mr-1">
-					{props.text ||""}
+					{props.text ??""}
 				</div>
 				<IconContext.Provider value={{className:""}}>
 					<VscChevronDown/>

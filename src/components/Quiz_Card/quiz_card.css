@@ -15,10 +15,7 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  width: calc(35*25px);
   margin: 0 auto;
-  font-size: small;
-  height: 60px;
 }
 
 .card * {
@@ -42,10 +39,6 @@
           flex: 1;
 }
 
-.card--info--name {
-  font-size: 1.5rem;
-}
-
 .card--info--description {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -65,11 +58,17 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 !important;
+  overflow: hidden;
 }
 
-.card--button:hover div {
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+.card--button svg {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.card--button:hover svg {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .card--date {

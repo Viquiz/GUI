@@ -11,9 +11,10 @@ import {
     removeQuestion,
     getQuestionSet,
     putQuestionSet,
+    Question,
 } from "../../database";
 
-import Button from "@components/button";
+import {Button} from "@components/button";
 
 type PROPS = {
     t: string;
@@ -28,82 +29,64 @@ const QuizEditor: React.FC<PROPS> = (props) => {
     let match = useRouteMatch<MatchParams>("/Quiz/:id");
     let id = match?.params.id;
 
-    const [value, setValue] = useState<CardPROPS[]>([]);
+    const [value, setValue] = useState<Question[]>([]);
 
     const reloadDB = useCallback(() => {
         if (id === undefined) {
-            let questionData: CardPROPS[] = getAllQuestion(() => {
-                setValue(() => questionData);
-            });
+            getAllQuestion().then(value => setValue(value));
         } else {
-            let questionData: CardPROPS[] = getQuestionsByQuestionSet(
-                id,
-                () => {
-                    setValue(() => questionData);
-                }
-            );
+            // let questionData: CardPROPS[] = getQuestionsByQuestionSet(
+            //     id,
+            //     () => {
+            //         setValue(() => questionData);
+            //     }
+            // );
         }
     }, [id]);
-
-    //https://alexsidorenko.com/blog/react-infinite-loop/
-    // note: do not remove [] ... or every thing go ....
     const reference = useRef<QuestionSet>();
 
     useEffect(() => {
-        if (id === undefined) reloadDB();
-        else
-            getQuestionSet(id, (data) => {
-                reference.current = data;
-                console.log("data", data);
-                reloadDB();
-            });
+        // if (id === undefined) reloadDB();
+        // else
+        //     getQuestionSet(id, (data) => {
+        //         reference.current = data;
+        //         console.log("data", data);
+        //         reloadDB();
+        //     });
     }, [id, reloadDB, reference]);
 
     const addQuest = () => {
-        let templateCardPROPS: CardPROPS = {
+        let templateCardPROPS: Question = {
             _id: String(new Date().getTime()),
             img: "",
             title: "new question ",
             answers: [],
             create: new Date().toJSON(),
             edit: new Date().toJSON(),
-            correctAnswers: [],
+            correctAnswers: [1,2,3],
             gameMode: ""
         };
 
         if (id === undefined) {
             //add question to set
-            addQuestion(templateCardPROPS, reloadDB);
+            addQuestion(templateCardPROPS).then(reloadDB);
         } else {
-            getQuestionSet(id, (data) => {
-                reference.current = data;
-                addQuestion(templateCardPROPS, () => {
-                    (
-                        (reference.current as QuestionSet).questions as string[]
-                    ).push(templateCardPROPS._id);
-                    putQuestionSet(reference.current as QuestionSet, reloadDB);
-                });
-            });
+            // getQuestionSet(id, (data) => {
+            //     reference.current = data;
+            //     addQuestion(templateCardPROPS, () => {
+            //         (
+            //             (reference.current as QuestionSet).questions as string[]
+            //         ).push(templateCardPROPS._id);
+            //         putQuestionSet(reference.current as QuestionSet, reloadDB);
+            //     });
+            // });
         }
     };
 
     const removeQuest = (index: number, _id: string) => {
-        if (id === undefined) {
-            // enire remove quétion
-            removeQuestion(_id, reloadDB);
-        } else {
-            console.log(
-                "selectedQuestionSet",
-                reference.current as QuestionSet
-            );
-            getQuestionSet(id, (data) => {
-                reference.current = data;
-                (
-                    (reference.current as QuestionSet).questions as string[]
-                ).splice(index);
-                putQuestionSet(reference.current as QuestionSet, reloadDB);
-            });
-        }
+            console.log(_id);
+            removeQuestion(_id).then(reloadDB);
+
     };
 
     return (

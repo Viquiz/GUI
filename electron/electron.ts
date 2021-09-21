@@ -16,7 +16,7 @@ app.whenReady().then(() => {
 		},
 		autoHideMenuBar: true
 	});
-	window.loadURL("http://localhost:3000");
+	window.loadURL(`http://localhost:13125`);
 	window.once("ready-to-show",()=>
 	{
 		window.show();

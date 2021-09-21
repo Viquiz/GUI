@@ -1,5 +1,6 @@
 import React from "react"
 import { useRouteMatch } from "react-router-dom"
+import { Question } from "src/database";
 
 export interface answers {
 	[index: number]: string,
@@ -18,7 +19,7 @@ export interface CardPROPS {
 	[k: string]: unknown
 }
 
-const Question_card: React.FC<CardPROPS> = (props) => {
+const Question_card: React.FC<Question> = (props) => {
 	const { url } = useRouteMatch();
 	const createDate = new Date(props.create);
 	const editDate = new Date(props.edit);

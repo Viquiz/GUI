@@ -1,0 +1,28 @@
+.ToggleButton_animation {
+  -webkit-animation: toggle 100ms linear forwards;
+          animation: toggle 100ms linear forwards;
+}
+
+.ToggleButton_animationR {
+  -webkit-animation: toggle 100ms linear forwards;
+          animation: toggle 100ms linear forwards;
+  animation-direction: reverse;
+}
+
+@-webkit-keyframes toggle {
+  from {
+    left: 0.25em;
+  }
+  to {
+    left: calc(100% - 1em);
+  }
+}
+
+@keyframes toggle {
+  from {
+    left: 0.25em;
+  }
+  to {
+    left: calc(100% - 1em);
+  }
+}

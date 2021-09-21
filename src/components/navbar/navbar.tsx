@@ -41,19 +41,21 @@ const NavBar = (props:any) => {
 		})
 	}
     return (
-	<SideBar Collapsible={false}>
-		<SideBarHeader  icon={FaReact}>
-			Viquiz
-		</SideBarHeader>
-		<SideBarContent>
-			<Menu>
-				{getItemNodes(props.MenuItems)}
-			</Menu>
-		</SideBarContent>
-		<SideBarFooter>
-			FB
-		</SideBarFooter>
-	</SideBar>
+	<div className="w-14 overflow-visible z-50">
+		<SideBar Collapsible={true}>
+			<SideBarHeader  icon={FaReact}>
+				Viquiz
+			</SideBarHeader>
+			<SideBarContent>
+				<Menu>
+					{getItemNodes(props.MenuItems)}
+				</Menu>
+			</SideBarContent>
+			<SideBarFooter>
+				FB
+			</SideBarFooter>
+		</SideBar>
+	</div>
     );
 }
 
