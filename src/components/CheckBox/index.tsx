@@ -25,7 +25,7 @@ const CheckBox:React.FC<CheckBoxPROPS> = (props) => {
 			<input className="w-0 h-0 opacity-0" onClick={(ev)=>{
 				setChecked(_checked => (ev.target as HTMLInputElement).checked)
 			}} type="checkbox"/>
-			<div className={`${props.className} w-6 h-6 ${props.labelLeft?"ml-2":"mr-2"} flex justify-center items-center border text-white border-gray-700 rounded-sm ${checked?"bg-button-primary":"hover:bg-gray-200 hover:bg-opacity-75"}`}>
+			<div className={`${props.className} w-6 h-6 ${props.label?(props.labelLeft?"ml-2":"mr-2"):""} flex justify-center items-center border text-white border-gray-700 rounded-sm ${checked?"bg-button-primary":"hover:bg-gray-200 hover:bg-opacity-75"}`}>
 				{checked?<VscCheck style={{strokeWidth: "3px"}}/>:undefined}
 			</div>
 			{props.labelLeft?undefined:props.label}

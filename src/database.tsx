@@ -84,6 +84,7 @@ async function getQuestionSet(_Question_set_id: string){
 };
 
 async function putQuestionSet(data: QuestionSet){
+    console.log(data)
     return questionSetDB.put(data);
 };
 

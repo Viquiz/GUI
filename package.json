@@ -15,6 +15,7 @@
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.14",
+    "lodash": "^4.17.21",
     "pouchdb": "^7.2.2",
     "pouchdb-server": "^4.2.0",
     "react": "^17.0.2",

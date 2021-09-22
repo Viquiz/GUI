@@ -25,9 +25,6 @@ let test:Question = {
 }
 const QuestionManager:React.FC<QManagerPROPS> = (props)=>{
 	const {loading,value,error,trigger} = useAsync(getAllQuestion);
-	useEffect(()=>{
-		console.log(value)
-	},[value])
 	return (
 		<div className="w-full h-full overflow-hidden">
 			<QuestionCard

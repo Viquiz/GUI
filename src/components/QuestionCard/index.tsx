@@ -1,17 +1,14 @@
 import {Button} from '@components/button';
 import { CheckBox } from '@components/CheckBox';
 import { integerGenerator } from '@common/generator';
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { memo, useEffect, useMemo, useReducer, useState } from 'react';
 import {answer, Question} from '../../database';
 import { ButtonBar } from '@components/ButtonBar';
 import { VscAdd, VscChromeMinimize } from 'react-icons/vsc';
 import { IconContext } from 'react-icons';
 import { FiTrash } from 'react-icons/fi';
-const answerIDgenerator = integerGenerator()
-function generateID(){
-	const {value,done} = answerIDgenerator.next()
-	return value as number;
-}
+import { access } from 'fs';
+
 const reducerFunctions:{[key:string]:(state:Question,params:any)=>any} = {
 	UPDATE_ANSWER:(state,{value,index}:{value:string,index:number})=>{
 		const newAnswers = [...state.answers]
@@ -24,7 +21,12 @@ const reducerFunctions:{[key:string]:(state:Question,params:any)=>any} = {
 		return {...state,correctAnswers:newAnswers}
 	},
 	ADD_ANSWER:(state)=>{
-		return {...state,answers:[...state.answers,{text:"Edit question here",isCorrect:false,id:generateID()}]}
+		let last_id = state.answers.slice(-1)[0]?.id as number;
+		if(last_id === undefined)
+		{
+			last_id = -1;
+		}
+		return {...state,answers:[...state.answers,{text:"Edit question here",isCorrect:false,id:last_id+1}]}
 	},
 	DELETE_ANSWER:(state,{index}:{index:number})=>{
 		const answer = [...state.answers]
@@ -32,13 +34,7 @@ const reducerFunctions:{[key:string]:(state:Question,params:any)=>any} = {
 		console.log(index,answer)
 		return {...state,answers:answer}
 	},
-	INIT:(state)=>{
-		const answer = [...state.answers]
-		answer.forEach(element => {
-			element.id = generateID();
-		});
-		return {...state,answers:answer}
-	},
+
 }
 type action = keyof typeof reducerFunctions;
 interface ACTION{
@@ -58,9 +54,21 @@ interface PROPS{
 	[key:string]:unknown
 }
 
-function QuestionCard({onSave,onAdd,onDelete,...props}:PROPS) {
+function QuestionCard ({onSave,onAdd,onDelete,...props}:PROPS) {
 	const [editMode,setEditMode] = useState(false);
-	const [question,dispatch] = useReducer(reducer,JSON.parse(JSON.stringify(props.question)))
+	const answerIDgenerator = integerGenerator()
+	function generateID(){
+		const {value,done} = answerIDgenerator.next()
+		return value as number;
+	}
+	const [question,dispatch] = useReducer(reducer,undefined,()=>{
+		console.log(props.question._id)
+		const q = JSON.parse(JSON.stringify(props.question)) as Question;
+		q.answers.forEach((item,index)=>{
+			item.id = index;
+		})
+		return q
+	});
 	const [saved,setSaved] = useState(false);
 	useEffect(()=>{
 		dispatch({type:"INIT"})
@@ -89,15 +97,19 @@ function QuestionCard({onSave,onAdd,onDelete,...props}:PROPS) {
 					{(question.answers as answer[]).map((item,index)=>{
 						return (
 						<div key={item.id} className={`h-24 ${item.isCorrect ? 'bg-green-600':'bg-red-500'} p-2 border border-black shadow-md`}>
-							{editMode && <CheckBox checked={item.isCorrect} onChange={(value)=>{
-								dispatch({type:"EDIT_CORRECT_ANSWER",payload:{value:value,index:index}})
-							}}className="bg-white"></CheckBox>}
+							{editMode &&
+							<div className="h-full inline-flex flex-col w-6 align-middle justify-evenly mr-3">
+								 <CheckBox checked={item.isCorrect} onChange={(value)=>{
+									dispatch({type:"EDIT_CORRECT_ANSWER",payload:{value:value,index:index}})
+								}}className="bg-white"></CheckBox>
+								<Button className="bg-white w-full" icon={FiTrash} onClick={()=>dispatch({type:"DELETE_ANSWER",payload:{index:index}})}></Button>
+							</div>
+							}
 
 
 							<textarea disabled={!editMode} onChange={(ev)=>{
 								if(ev.target.value !=="")
 									return dispatch({type:"UPDATE_ANSWER",payload:{value:ev.target.value,index:index}})
-								return dispatch({type:"DELETE_ANSWER",payload:{index:index}})
 							}} 
 							className={`resize-none h-full align-middle overflow-hidden ${item.isCorrect ? 'bg-green-600':'bg-red-500'} focus:bg-gray-400 focus:bg-opacity-60 text-gray-200`} rows={2} cols={40} wrap="soft" defaultValue={item.text}/>
 						</div>
@@ -134,7 +146,6 @@ function QuestionCard({onSave,onAdd,onDelete,...props}:PROPS) {
 	)
 
 }
-
 
 export {
 	QuestionCard
