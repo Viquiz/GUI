@@ -24,7 +24,6 @@ let test:Question = {
 	gameMode: '213'
 }
 const QuestionManager:React.FC<QManagerPROPS> = (props)=>{
-	const {loading,value,error,trigger} = useAsync(getAllQuestion);
 	return (
 		<div className="w-full h-full overflow-hidden">
 			<QuestionCard

@@ -16,7 +16,7 @@ import {
 } from "../../database";
 
 import {Button} from "@components/button";
-import { useAsync } from "@common/customHook";
+import { useAsync, useAsyncPreValue } from "@common/customHook";
 
 type PROPS = {
     t: string;
@@ -39,7 +39,7 @@ let templateCardPROPS: CardPROPS = {
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
 
-    const {loading,value,error,trigger} = useAsync(getAllQuestionSet);
+    const {loading,value,error,trigger} = useAsyncPreValue(getAllQuestionSet);
     const addSet = () => {
         
         putQuestionSet(templateCardPROPS).then(()=> trigger()).catch(console.log)
@@ -78,7 +78,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                             onClick={() => removeQuest(item._id)}
                         />
                     </Quiz_card>
-                )):loading?"loading":"finish"}
+                )):loading?"loading":"failed to load"}
             </div>
             <div
                 style={{
