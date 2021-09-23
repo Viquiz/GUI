@@ -69,7 +69,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
             {value && (value as unknown as Question[]).map(item=>{
                 return <QuestionCard key={item._id} question={item} 
                 onSave={function (question: Question): void {
-                    throw new Error("Function not implemented.");
+                    trigger();
                 } } 
                 onAdd={function (): void {
                     addQuest()

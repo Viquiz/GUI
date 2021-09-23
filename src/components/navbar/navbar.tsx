@@ -32,11 +32,11 @@ const NavBar = (props:any) => {
 		}).map((item:any) =>
 		{	
 			return (
-				<MenuItem key={item.id} selected={view===item.id} icon={item.icon}>
-					<Link className="w-full h-full flex justify-start items-center" to={item.to}>
-						<span>{item.display}</span>
+					<Link className="flex justify-start items-center" to={item.to}>
+						<MenuItem key={item.id} selected={view===item.id} icon={item.icon}>
+								<span>{item.display}</span>
+						</MenuItem>
 					</Link>
-				</MenuItem>
 			)
 		})
 	}

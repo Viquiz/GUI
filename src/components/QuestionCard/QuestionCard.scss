@@ -1,0 +1,14 @@
+.wrapper{
+	grid-template-columns: 14rem auto;
+	grid-template-rows: 4rem 14rem auto;
+	
+	gap: 1rem;
+	grid-template-areas: 
+	"mini_map question"
+	"mini_map image"
+	"mini_map textBox";
+}
+
+.mini_map{
+	grid-area: mini_map;
+}

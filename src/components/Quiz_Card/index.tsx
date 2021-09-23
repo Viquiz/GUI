@@ -20,6 +20,8 @@ export interface CardPROPS
 	questions: questionIDs
 	[k: string]: unknown
 }
+
+
 const Quiz_card:React.FC<CardPROPS> = (props)=>
 {
 	const {url} = useRouteMatch()

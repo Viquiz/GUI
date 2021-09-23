@@ -6,6 +6,7 @@ import "./style/tailwind.css";
 import App from "./App";
 import QuizManager from"@pages/quiz/QuizManager";
 import QuizEditor from '@pages/quiz/QuizEditor';
+import QuizEditorV2 from '@pages/quiz/QuizEditorV2';
 import {ImBook, ImQuestion} from "react-icons/im"
 import {BsGearFill} from "react-icons/bs";
 import Setting from '@pages/setting/Setting';
@@ -35,7 +36,7 @@ const MenuItems = [{
 	id:3,
 	to:"/QuestionManager",
 	display:"Questions",
-	component: QuestionManager,
+	component: QuizEditorV2,
 	icon: <ImQuestion/>,
 },
 {

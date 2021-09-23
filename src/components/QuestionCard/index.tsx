@@ -56,11 +56,6 @@ interface PROPS{
 
 function QuestionCard ({onSave,onAdd,onDelete,...props}:PROPS) {
 	const [editMode,setEditMode] = useState(false);
-	const answerIDgenerator = integerGenerator()
-	function generateID(){
-		const {value,done} = answerIDgenerator.next()
-		return value as number;
-	}
 	const [question,dispatch] = useReducer(reducer,undefined,()=>{
 		console.log(props.question._id)
 		const q = JSON.parse(JSON.stringify(props.question)) as Question;
@@ -80,6 +75,7 @@ function QuestionCard ({onSave,onAdd,onDelete,...props}:PROPS) {
 	function exitEditMode()
 	{
 		setEditMode(false);
+		onSave(question);
 	}
 	function save()
 	{

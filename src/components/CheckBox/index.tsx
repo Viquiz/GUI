@@ -9,7 +9,7 @@ interface CheckBoxPROPS
 	[key:string]:unknown
 }
 const CheckBox:React.FC<CheckBoxPROPS> = (props) => {
-	const [checked,setChecked] = useState(Boolean(props.checked));
+	const [checked,setChecked] = useState(props.checked);
 	const [firstRender,setFirstRender] = useState(true);
 	useEffect(()=>{
 		if(firstRender) {
@@ -17,8 +17,11 @@ const CheckBox:React.FC<CheckBoxPROPS> = (props) => {
 			
 		}
 		else
-			props.onChange?.(checked)
+			props.onChange?.(checked as boolean)
 	},[checked])
+	useEffect(()=>{
+		setChecked(props.checked)
+	},[props.checked])
 	return (
 		<label className="align-middle inline-flex justify-start items-center">
 			{props.labelLeft?props.label:undefined}

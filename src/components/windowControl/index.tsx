@@ -16,8 +16,7 @@ const TitleBar:React.FC<PROPS> = (props)=>{
 		BrowserWindow.eventMaximize(setMaximize)
 	
 	return (
-		<div className="">
-			<div className="h-titleBar flex justify-end items-center relative titleBar dark:bg-blue-900 dark:text-white">
+			<div className="h-titleBar flex justify-end items-center relative titleBar dark:bg-blue-900 dark:text-white bg-blue-800 text-white">
 				<div className="absolute top-2/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4 w-fit h-full">
 					<span>{props.title}</span>
 				</div>
@@ -39,7 +38,6 @@ const TitleBar:React.FC<PROPS> = (props)=>{
 						</div>
 				</IconContext.Provider>
 			</div>
-		</div>
 	)
 }
 

@@ -19,13 +19,13 @@ const Button:React.FC<Button_PROPS> = (props) => {
 	return (
 		<button onClick={(ev)=>{ev.preventDefault();props.onClick(ev)}} disabled={props.disabled} ref={btn} 
 		className={`
-		${props.disabled?"pointer-events-none":""}
-		${props.className ?? ""}
+		${props.disabled?"pointer-events-none":""}		
 		align-middle
 		disabled:cursor-default disabled:bg-button-disabled 
 		active:shadow-button 
 		rounded-sm
 		min-w-min
+		${props.className ?? ""}
 		`}>
 			<div className={`
 			${props.disabled?"pointer-events-none":""}
