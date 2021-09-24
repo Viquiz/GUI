@@ -3,26 +3,9 @@ import React from "react"
 import { Link, useRouteMatch } from "react-router-dom"
 import { BsPlay } from "react-icons/bs"
 import { IconContext } from "react-icons"
+import { QuestionSet } from "src/database"
 
-export interface questionIDs {
-	[index: number]: string,
-}
-
-export interface CardPROPS
-{
-	_id: string
-	_rev?: string
-	title:string
-	description:string
-	create:string
-	edit:string
-	Class:string
-	questions: questionIDs
-	[k: string]: unknown
-}
-
-
-const Quiz_card:React.FC<CardPROPS> = (props)=>
+const Quiz_card:React.FC<QuestionSet> = (props)=>
 {
 	const {url} = useRouteMatch()
 	const date = new Date(props.create)

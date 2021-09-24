@@ -8,8 +8,9 @@ import {
     useParams,
     useRouteMatch,
 } from "react-router-dom";
-import Quiz_card, { CardPROPS } from "../../components/Quiz_Card";
+import Quiz_card from "../../components/Quiz_Card";
 import {
+    QuestionSet,
     getAllQuestionSet,
     putQuestionSet,
     removeQuestionSet,
@@ -27,7 +28,7 @@ type PROPS = {
 // const exq: questionIDs = [
 // 	"1234", "12112"
 // ]
-let templateCardPROPS: CardPROPS = {
+let templateCardPROPS: QuestionSet = {
     _id: String(new Date().getTime()),
     title: "new set",
     description: "idk",
@@ -62,22 +63,24 @@ const QuizManager: React.FC<PROPS> = (props) => {
                 Functionality
             </div>
             <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                {value?(value as CardPROPS[]).map((item) => (
-                    <Quiz_card key={item._id} {...item}>
-                        <Button
-                            disabled={false}
-                            className="bg-button-primary"
-                            text="Play"
-                            onClick={() => alert("no")}
-                        />
-                        <Link to={`/Quiz/${item._id}`}>edit</Link>
-                        <Button
-                            disabled={false}
-                            className="bg-button-primary"
-                            text="remove"
-                            onClick={() => removeQuest(item._id)}
-                        />
-                    </Quiz_card>
+                {value?(value as QuestionSet[]).map((item) => (
+                    <Link to={`/Quiz/${item._id}`}>
+                        <Quiz_card key={item._id} {...item}>
+                            <Button
+                                disabled={false}
+                                className="bg-button-primary"
+                                text="Play"
+                                onClick={() => alert("no")}
+                            />
+                            <Link to={`/Quiz/${item._id}`}>edit</Link>
+                            <Button
+                                disabled={false}
+                                className="bg-button-primary"
+                                text="remove"
+                                onClick={() => removeQuest(item._id)}
+                            />
+                        </Quiz_card>
+                    </Link>
                 )):loading?"loading":"failed to load"}
             </div>
             <div
