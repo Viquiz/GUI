@@ -28,7 +28,6 @@ type PROPS = {
 // const exq: questionIDs = [
 // 	"1234", "12112"
 // ]
-
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
     const {loading,value,error,trigger} = useAsyncPreValue(getAllQuestionSet);
