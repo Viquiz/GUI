@@ -8,11 +8,12 @@ import {
     useParams,
     useRouteMatch,
 } from "react-router-dom";
-import Quiz_card, { CardPROPS } from "../../components/Quiz_Card";
+import Quiz_card from "@components/Quiz_Card";
 import {
     getAllQuestionSet,
     putQuestionSet,
     removeQuestionSet,
+    QuestionSet,
 } from "../../database";
 
 import {Button} from "@components/button";
@@ -30,10 +31,9 @@ type PROPS = {
 
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
-
     const {loading,value,error,trigger} = useAsyncPreValue(getAllQuestionSet);
     const addSet = () => {
-        let templateCardPROPS: CardPROPS = {
+        let templateCardPROPS: QuestionSet = {
             _id: String(new Date().getTime()),
             title: "new set",
             description: "idk",
@@ -62,7 +62,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                 Functionality
             </div>
             <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                {value?(value as CardPROPS[]).map((item) => (
+                {value?(value as QuestionSet[]).map((item) => (
                     <Link key={item._id} to={`${(props.match as any).path}/${item._id}`}>
                         <Quiz_card key={item._id}  {...item}>
                             <Button

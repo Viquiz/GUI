@@ -3,11 +3,10 @@ import { useRouteMatch } from "react-router-dom";
 import Question_card, {
     CardPROPS,
 } from "@components/Question_Card/question_card";
-import { CardPROPS as QuestionSet } from "@components/Quiz_Card";
 import {
     getAllQuestion,
     getQuestionsByQuestionSet,
-    addQuestion,
+    putQuestion,
     removeQuestion,
     getQuestionSet,
     putQuestionSet,

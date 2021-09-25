@@ -3,12 +3,22 @@ import React from 'react';
 import PouchDB from "pouchdb";
 // to do : remove this ????
 
-import {
-    CardPROPS as QuestionSet,
-    questionIDs,
-} from "./components/Quiz_Card";
+export interface questionIDs {
+	[index: number]: string,
+}
 
-
+export interface QuestionSet
+{
+	_id: string
+	_rev?: string
+	title:string
+	description:string
+	create:string
+	edit:string
+	Class:string
+	questions: questionIDs
+	[k: string]: unknown
+}
 
 export type answer = {
     text:string,
@@ -19,7 +29,7 @@ export type answer = {
 export interface Question {
 	_id: string,
 	_rev?: string,
-	img: string,
+	img?: string,
 	title: string,
 	answers: answer[],
 	create: string,
@@ -28,6 +38,9 @@ export interface Question {
 	[k: string]: unknown
 }
 
+export interface Static {
+ // ???
+}
 
 //using cloud
 // const HOST_ADD = "http://localhost:5984/"
@@ -60,7 +73,7 @@ async function getQuestionsByQuestionSet(_Question_set_id: string){
     return [data,qSets];
 };
 
-async function addQuestion(data: Question){
+async function putQuestion(data: Question){
     return questionDB.put(data);
 };
 
@@ -80,7 +93,7 @@ async function getAllQuestionSet(){
 };
 
 async function getQuestionSet(_Question_set_id: string){
-    return (await  questionSetDB.get(_Question_set_id)) as QuestionSet;
+    return (await questionSetDB.get(_Question_set_id)) as QuestionSet;
 };
 
 async function putQuestionSet(data: QuestionSet){
@@ -99,7 +112,7 @@ export {
     getAllQuestion,
     getQuestionsByQuestionSet,
     removeQuestion,
-    addQuestion,
+    putQuestion,
 
 
     getQuestionSet,
