@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useAsync} from "@common/customHook"
-import {QuestionCard} from "@components/QuestionCard"
+import {QuestionCard} from "@components/QuestionCard/QuestionCard"
 import {
 	Question,
 	getAllQuestion,

@@ -5,7 +5,7 @@ import {DropDown,DropDownItems} from '@components/DropDownButton'
 import {ToggleButton} from '@components/ToggleButton'
 import { SearchBox } from '@components/SearchBox'
 import { CheckBox } from '@components/CheckBox'
-import { QuestionCard  } from '@components/QuestionCard'
+import { QuestionCard  } from '@components/QuestionCard/QuestionCard'
 
 const items:any =[{
 	icon:FaFilter,

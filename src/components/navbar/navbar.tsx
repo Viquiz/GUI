@@ -32,8 +32,8 @@ const NavBar = (props:any) => {
 		}).map((item:any) =>
 		{	
 			return (
-					<Link className="flex justify-start items-center" to={item.to}>
-						<MenuItem key={item.id} selected={view===item.id} icon={item.icon}>
+					<Link  key={item.id} className="flex justify-start items-center" to={item.to}>
+						<MenuItem selected={view===item.id} icon={item.icon}>
 								<span>{item.display}</span>
 						</MenuItem>
 					</Link>

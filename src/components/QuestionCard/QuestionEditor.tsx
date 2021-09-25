@@ -95,8 +95,16 @@ function TextBox({text,onChange,...props}:TextBoxPROPS){
 	);
 }
 
+interface QuestionEditorPROPS{
+	onSave:(value:Question)=> void;
+	onBack:()=>void;
+	onAddAnswer:()=> void;
+	onDelete:()=> void;
+	question:Question
+	[key:string]:unknown;
+}
 
-function QuestionEditor ({onSave,onAdd,onDelete,...props}:any) {
+function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionEditorPROPS) {
 	const [currentAnswer,setCurrentAnswer] = useState(0);
 	const [question,dispatch] = useReducer(reducer,JSON.parse(JSON.stringify(props.question)));
 	return (
@@ -115,7 +123,7 @@ function QuestionEditor ({onSave,onAdd,onDelete,...props}:any) {
 					className="w-24 h-10 bg-button-primary rounded-sm"
 					icon={VscArrowLeft}
 					onClick={function (event){
-						throw new Error('Function not implemented.');
+						onBack();
 					} }/>
 				</IconContext.Provider>
 			</div>

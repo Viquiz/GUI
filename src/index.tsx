@@ -12,6 +12,7 @@ import {BsGearFill} from "react-icons/bs";
 import Setting from '@pages/setting/Setting';
 import TitleBar from "@components/windowControl"
 import { QuestionManager } from '@pages/QuestionManager';
+import QuizDashBoard from '@pages/quiz/QuizDashBoard';
 const MenuItems = [{
 	id:0,
 	to:"/Quiz",
@@ -21,22 +22,14 @@ const MenuItems = [{
 	exact:true
 },
 {
-	id:10,
 	to:"/Quiz/:id",
-	component: QuizEditor,
+	component: QuizDashBoard,
 },
 {
 	id:1,
 	to:"/QuizEditor",
 	display:"All Question",
 	component: QuizEditor,
-	icon: <ImQuestion/>,
-},
-{
-	id:3,
-	to:"/QuestionManager",
-	display:"Questions",
-	component: QuizEditorV2,
 	icon: <ImQuestion/>,
 },
 {

@@ -17,7 +17,7 @@ import {
 
 import {Button} from "@components/button";
 import { useAsync, useAsyncPreValue } from "@common/customHook";
-import { QuestionCard } from "@components/QuestionCard";
+import { QuestionCard } from "@components/QuestionCard/QuestionCard";
 
 type PROPS = {
     t: string;
