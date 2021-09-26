@@ -1,15 +1,23 @@
-# Getting Started with Create React App
+# ViQuiz GUI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A prototype Web GUI 
+this project require [yarn](https://yarnpkg.com/getting-started/install) to manager package 
+
+## Using VSCode
+
+Run `install` task for yarn install
+
+Run `start` to start the view app in the browser. After this you can run `start desktop` to view the app.
 
 ## Available Scripts
-
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn install`
+to install requirement packet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `yarn start`
+notice defaul craco will start on port 3000 but we move to port 13125 so
+Open [http://localhost:13125](http://localhost:13125) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -38,6 +46,7 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
 
 ## Learn More
 

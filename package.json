@@ -30,7 +30,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently \"yarn run server\" \"set PORT=13125 && yarn run start:web\"  ",
+    "startWDB": "concurrently \"yarn run server\" \"set PORT=13125 && yarn run start:web\"  ",
+    "start": "set PORT=13125 && yarn run start:web",
     "server": "pouchdb-server -d ./localDB --port 5984",
     "start:web": "craco start",
     "build:web": "craco build",

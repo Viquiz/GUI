@@ -1,3 +1,5 @@
+//WARNING THIS PAGE IS NOT INCLUDED IN ANY FILE
+
 import React from 'react';
 const Home = (props:any) =>
 {

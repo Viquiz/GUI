@@ -1,22 +1,6 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useRouteMatch } from "react-router-dom";
-import Question_card, {
-    CardPROPS,
-} from "@components/Question_Card/question_card";
-import {
-    getAllQuestion,
-    getQuestionsByQuestionSet,
-    putQuestion,
-    removeQuestion,
-    getQuestionSet,
-    putQuestionSet,
-    Question,
-    getAllQuestionSet,
-} from "../../database";
-
-import {Button} from "@components/button";
-import { useAsync, useAsyncPreValue } from "@common/customHook";
-import { QuestionEditor ,QuestionCard} from "@components/QuestionCard";
+import React from "react";
+import { Question } from "../../database";
+import { QuestionEditor} from "@components/QuestionCard";
 
 type PROPS = {
     t: string;
@@ -26,8 +10,6 @@ type PROPS = {
 export interface MatchParams {
     id: string;
 }
-
-
 
 const QuizEditorV2: React.FC<PROPS> = (props) => {
     return (

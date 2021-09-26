@@ -1,7 +1,4 @@
-import React from 'react';
-
 import PouchDB from "pouchdb";
-// to do : remove this ????
 
 export interface questionIDs {
 	[index: number]: string,
@@ -39,7 +36,7 @@ export interface Question {
 }
 
 export interface Static {
- // ???
+ // ??? future statistical data will be here
 }
 
 //using cloud
@@ -114,11 +111,9 @@ export {
     removeQuestion,
     putQuestion,
 
-
     getQuestionSet,
     putQuestionSet,
     getAllQuestionSet,
-
 
     removeQuestionSet,
 };

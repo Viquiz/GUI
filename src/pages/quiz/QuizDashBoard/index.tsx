@@ -1,23 +1,5 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useRouteMatch } from "react-router-dom";
-import Question_card, {
-    CardPROPS,
-} from "@components/Question_Card/question_card";
-import { CardPROPS as QuestionSet } from "@components/Quiz_Card";
-import {
-    getAllQuestion,
-    getQuestionsByQuestionSet,
-    addQuestion,
-    removeQuestion,
-    getQuestionSet,
-    putQuestionSet,
-    Question,
-    getAllQuestionSet,
-} from "../../../database";
-
-import {Button} from "@components/button";
-import { useAsync, useAsyncPreValue } from "@common/customHook";
-import { QuestionCard } from "@components/QuestionCard/QuestionCard";
+import React from "react";
+import {Question } from "../../../database";
 import { QuestionEditor } from "@components/QuestionCard/QuestionEditor";
 
 type PROPS = {
@@ -28,8 +10,6 @@ type PROPS = {
 export interface MatchParams {
     id: string;
 }
-
-
 
 const QuizDashBoard: React.FC<PROPS> = (props) => {
     return (

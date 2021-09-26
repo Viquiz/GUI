@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		
+		{
+			"type": "npm",
+			"script": "install",
+			"problemMatcher": [],
+			"label": "install",
+			"detail": "install dependency "
+		},
+
+		{
+			"type": "npm",
+			"script": "start",
+			"problemMatcher": [],
+			"label": "start",
+			"detail": "set PORT=13125 && yarn run start:web"
+		},
+
+		{
+			"type": "npm",
+			"script": "start:desktop",
+			"problemMatcher": [],
+			"label": "start desktop",
+			"detail": "set PORT=13125 && yarn run start:web"
+		}
+	]
+}
