@@ -16,7 +16,7 @@ type PROPS = {
     [k: string]: unknown;
 };
 
-export interface MatchParams {
+interface MatchParams {
     id: string;
 }
 
