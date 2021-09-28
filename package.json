@@ -33,6 +33,8 @@
     "startWDB": "concurrently \"yarn run server\" \"set PORT=13125 && yarn run start:web\"  ",
     "start": "set PORT=13125 && yarn run start:web",
     "server": "pouchdb-server -d ./localDB --port 5984",
+    "start:server": "pouchdb-server -d ./localDB --port 5984",
+    "start:all": "concurrently \"set PORT=13125 && yarn run start:web\" \"yarn run start:desktop\"  ",
     "start:web": "craco start",
     "build:web": "craco build",
     "test:web": "craco test",

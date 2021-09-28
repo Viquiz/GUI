@@ -52,7 +52,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
     }, []);
 
     return (
-        <div className="h-full flex flex-col justify-start">
+        <div className="h-full flex flex-col justify-start overflow-y-auto">
             <div
                 style={{
                     height: "50px",
@@ -70,6 +70,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
             </div>
             {value &&
                 (value as unknown as Question[]).map((item) => {
+                    
                     return (
                         <QuestionCard
                             key={item._id}

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 
-export function useAsync<T>(callback:() => Promise<T>,defaultValue?:T, dependencies= []){
+export function useAsync<T>(callback:() => Promise<T>,defaultValue?:T, dependencies:any[] = [] as any[]){
 
 	const [loading, setLoading] = useState(true);
 	const [value, setValue] = useState<T|undefined>(defaultValue);
@@ -23,7 +23,7 @@ export function useAsync<T>(callback:() => Promise<T>,defaultValue?:T, dependenc
 
 
 
-export function useAsyncPreValue<T>(callback:() => Promise<T>,defaultValue?:T, dependencies= []){
+export function useAsyncPreValue<T>(callback:() => Promise<T>,defaultValue?:T, dependencies:any[]= []){
 
 	const [loading, setLoading] = useState(true);
 	const [trigger,setTrigger] = useState(false);

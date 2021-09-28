@@ -67,7 +67,7 @@ async function getQuestionsByQuestionSet(_Question_set_id: string){
                 keys: keys,
             });
     let qSets  = questionSet.rows.map(items =>items.doc) as Question[];
-    return [data,qSets];
+    return {Quiz:data,Questions:qSets};
 };
 
 async function putQuestion(data: Question){
@@ -94,7 +94,6 @@ async function getQuestionSet(_Question_set_id: string){
 };
 
 async function putQuestionSet(data: QuestionSet){
-    console.log(data)
     return questionSetDB.put(data);
 };
 

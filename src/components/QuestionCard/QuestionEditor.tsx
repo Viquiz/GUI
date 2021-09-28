@@ -5,6 +5,7 @@ import React, {  useEffect, useReducer, useRef, useState } from 'react';
 import { answer, Question} from '../../database';
 import { VscArrowLeft, VscSave } from 'react-icons/vsc';
 import { IconContext } from 'react-icons';
+import { values } from '@fluentui/utilities';
 
 
 const reducerFunctions:{[key:string]:(state:Question,params:any)=>any} = {
@@ -30,6 +31,9 @@ const reducerFunctions:{[key:string]:(state:Question,params:any)=>any} = {
 		const answer = [...state.answers]
 		answer.splice(index,1)
 		return {...state,answers:answer}
+	},
+	INIT:(state,value:Question)=>{
+		return {...value}
 	},
 
 }
@@ -60,6 +64,7 @@ interface AnswerListPROPS
 	[key:string]:unknown
 }
 function AnswerList({AnswerList,setCurrentAnswer,AddAnswer,...props}:AnswerListPROPS){
+	console.log(AnswerList);
 	return(
 		<ul className={`${props.className} px-3 overflow-y-auto`}>
 			{AnswerList.map((item,index)=>
@@ -98,15 +103,23 @@ function TextBox({text,onChange,...props}:TextBoxPROPS){
 interface QuestionEditorPROPS{
 	onSave:(value:Question)=> void;
 	onBack:()=>void;
-	onAddAnswer:()=> void;
-	onDelete:()=> void;
 	question:Question
 	[key:string]:unknown;
 }
 
-function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionEditorPROPS) {
+function QuestionEditor ({onSave,onBack,...props}:QuestionEditorPROPS) {
 	const [currentAnswer,setCurrentAnswer] = useState(0);
-	const [question,dispatch] = useReducer(reducer,JSON.parse(JSON.stringify(props.question)));
+	const [question,dispatch] = useReducer(reducer,null,()=>{
+		const q = JSON.parse(JSON.stringify(props.question)) as Question;
+		q.answers.map((value,index)=> value.id = index)
+		return q;	
+	});
+	useEffect(()=>{
+		const q = JSON.parse(JSON.stringify(props.question)) as Question;
+		q.answers.map((value,index)=> value.id = index)
+		dispatch({type:'INIT',payload:q})
+	},[props.question])
+	
 	return (
 	
 		<div className="h-full grid wrapper">
@@ -117,7 +130,7 @@ function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionE
 					className="w-24 h-10 bg-button-primary rounded-sm"
 					icon={VscSave}
 					onClick={function (event){
-						throw new Error('Function not implemented.');
+						onSave(question);
 					} }/>
 					<Button
 					className="w-24 h-10 bg-button-primary rounded-sm"
@@ -129,7 +142,9 @@ function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionE
 			</div>
 			<AnswerList className="w-full flex-1"
 			AnswerList={(question as Question).answers}
-			AddAnswer={()=>{console.log("add Answer")}}
+			AddAnswer={()=>{
+				dispatch({type:'ADD_ANSWER'})
+			}}
 			RemoveAnswer={(index:number)=>{
 				dispatch({type:"DELETE_ANSWER",payload:{index:index}})
 			}}
@@ -145,6 +160,7 @@ function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionE
 		</div>
 			
 		<div className="w-3/4 mx-auto flex justify-start p-4 h-24 border focus-within:border-2 border-gray-500 focus-within:border-button-primary shadow-lg">
+			{(question as Question).answers[currentAnswer]?<>
 			<CheckBox checked={(question as Question).answers[currentAnswer].isCorrect} onChange={(value)=>{
 				dispatch({type:"EDIT_CORRECT_ANSWER",payload:{value:value, index:currentAnswer}})
 			}}></CheckBox>
@@ -155,6 +171,7 @@ function QuestionEditor ({onSave,onAddAnswer,onDelete,onBack,...props}:QuestionE
 						dispatch({type:"UPDATE_ANSWER",payload:{value:value, index:currentAnswer}})
 					} }
 			/>
+			</>:<></>}
 		</div>
 		</div>
 	    );
