@@ -5,10 +5,11 @@ import {  Switch, Route, HashRouter} from 'react-router-dom';
 import "./style/tailwind.css";
 import App from "./App";
 import QuizManager from"@pages/quiz/QuizManager";
+import GamePlay1 from "@pages/play/game1"
 import QuizEditor from '@pages/quiz/QuizEditor';
 import QuizEditorV2 from '@pages/quiz/QuizEditorV2';
 import {ImBook, ImQuestion} from "react-icons/im"
-import {BsGearFill} from "react-icons/bs";
+import {BsGearFill, BsController} from "react-icons/bs";
 import Setting from '@pages/setting/Setting';
 import TitleBar from "@components/windowControl"
 import { QuestionManager } from '@pages/QuestionManager';
@@ -38,6 +39,13 @@ const MenuItems = [{
 	display:"Setting",
 	component: Setting,
 	icon: <BsGearFill/>
+},
+{
+	id:3,
+	to:"/GamePlay1",
+	display:"GamePlay1",
+	component: GamePlay1,
+	icon: <BsController/>
 },
 ]
 ReactDOM.render(
