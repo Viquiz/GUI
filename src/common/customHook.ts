@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 
 export function useAsync<T>(callback:() => Promise<T>,defaultValue?:T, dependencies:any[] = [] as any[]){
@@ -43,4 +43,24 @@ export function useAsyncPreValue<T>(callback:() => Promise<T>,defaultValue?:T, d
 		callbackMemorize()
 	},[callbackMemorize,trigger])
 	return {loading,error,value,trigger:callbackMemorize}
+}
+function clamp(min:number,max:number,value:number)
+{
+	if (value < min)
+		return max;
+	if (value > max)
+		return min;
+	return value;
+}
+export function useToggle<T>(state:T[]):[T,()=>void]{
+
+	const [value, toggleValue] = useState<T>(state[0]);
+	const c_state = useRef<number>(0);
+	function NextValue(){
+		c_state.current = clamp(0,state.length-1,c_state.current+1);
+		toggleValue(state[c_state.current]);
+		console.log(c_state)
+	}
+	return [value,NextValue]
+	
 }

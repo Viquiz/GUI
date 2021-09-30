@@ -32,7 +32,7 @@ const Button:React.FC<Button_PROPS> = (props) => {
 			w-full h-full
 			inline-flex justify-center items-center 
 			hover:bg-opacity-20
-			hover:bg-gray-900
+			hover:bg-gray-50
 			`}>
 				{props.icon?<props.icon/>:undefined}
 				{props.text && props.text !==""?<span className={`${props.icon?"ml-2":""}`}>{props.text}</span>:undefined}

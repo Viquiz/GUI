@@ -12,10 +12,8 @@ const ButtonBar:React.FC<ButtonBarPROPS> = (props)=>{
 				gridAutoRows:`100%`
 			}}
 			className={`${props.className} h-10 grid
-			absolute transform -translate-y-1/2 z-50
 			rounded-lg
 			overflow-hidden
-			w-52
 			divide-x
 			divide-gray-700
 			border border-gray-700

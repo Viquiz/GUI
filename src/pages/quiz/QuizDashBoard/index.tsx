@@ -75,33 +75,42 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
     if(mode < 0)
     {
         return (
-            <div className="flex justify-items-start items-center flex-col w-full min-h-full max-h-full  overflow-y-scroll">
-                {value?.Questions.map((value,index)=> <QuestionCard key={value._id} question={value} onSave={function (question: Question): void {
-                    throw new Error("Function not implemented.");
-                } } onAdd={function (): void {
-                    setMode(index);
-                } } onDelete={function (): void {
-                    throw new Error("Function not implemented.");
-                } }/>
-                )}
-                <Button onClick={AddQuestion} className="h-14 w-56 bg-button-primary fixed bottom-0 right-0"></Button>
+            <div className="w-full h-full flex flex-col">
+                <div>
+                    1`2312312312
+                </div>
+                <div className="flex justify-items-start items-center content-start flex-col w-full flex-grow  overflow-y-scroll">
+                    {value?.Questions.map((value,index)=> <QuestionCard key={value._id} question={value} onSave={function (question: Question): void {
+                        throw new Error("Function not implemented.");
+                    } } onAdd={function (): void {
+                        AddQuestion();
+                    } } onDelete={function (): void {
+                        DeleteQuestion(value._id);
+                    } } onEnterEdit={function (): void {
+                        setMode(index);
+                    } }/>
+                    )}
+                    <Button onClick={AddQuestion} className="h-14 w-56 bg-button-primary fixed bottom-0 right-0"></Button>
+                </div>
             </div>
                 )
     }
     return (
-         <QuestionEditor 
-        onSave={async function (value: Question) {
-            await  putQuestion(value);
-            trigger();
-        } } 
-        onBack={function (): void {
-
-            // pop up modal to check if user wanna save
-            // save -> put data into database
-            // if not -> do nothing and return to mode  -1 (main dashboard)
-            setMode(-1);
-        } } 
-        question={value?.Questions[mode] as Question}/>
+         <div className="w-full h-full relative">
+             <QuestionEditor 
+                     onSave={async function (value: Question) {
+                await  putQuestion(value);
+                trigger();
+                     } } 
+                     onBack={function (): void {
+                // pop up modal to check if user wanna save
+                // save -> put data into database
+                // if not -> do nothing and return to mode  -1 (main dashboard)
+                setMode(-1);
+                     } } 
+                question={value?.Questions[mode] as Question}/>
+        
+         </div>
         //add gallery to choose which question to edit
     );
 };

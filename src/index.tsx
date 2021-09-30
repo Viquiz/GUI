@@ -14,6 +14,12 @@ import Setting from '@pages/setting/Setting';
 import TitleBar from "@components/windowControl"
 import { QuestionManager } from '@pages/QuestionManager';
 import QuizDashBoard from '@pages/quiz/QuizDashBoard';
+
+
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import { PartialTheme, ThemeProvider } from '@fluentui/react';
+initializeIcons();
+
 const MenuItems = [{
 	id:0,
 	to:"/Quiz",
@@ -48,6 +54,9 @@ const MenuItems = [{
 	icon: <BsController/>
 },
 ]
+
+const myTheme: PartialTheme = {
+      };
 ReactDOM.render(
 	<React.StrictMode>
 		{/* 
@@ -60,13 +69,15 @@ ReactDOM.render(
 
 		note: HashRouter added annoying # in the front of the link  
 		*/}
-		<TitleBar title="Viquiz"/>
-		<HashRouter>
-			<div className="h-content flex justify-start items-center">
-				<NavBar MenuItems={MenuItems}/>
-				<App MenuItems={MenuItems}/>
-			</div>
-		</HashRouter>
+		<ThemeProvider theme={myTheme}>
+			<TitleBar title="Viquiz"/>
+			<HashRouter>
+				<div className="h-content flex justify-start items-center">
+					<NavBar MenuItems={MenuItems}/>
+					<App MenuItems={MenuItems}/>
+				</div>
+			</HashRouter>
+		</ThemeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
   );

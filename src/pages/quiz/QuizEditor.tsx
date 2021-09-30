@@ -72,21 +72,7 @@ const QuizEditor: React.FC<PROPS> = (props) => {
                 (value as unknown as Question[]).map((item) => {
                     
                     return (
-                        <QuestionCard
-                            key={item._id}
-                            question={item}
-                            onSave={function (question: Question): void {
-                                console.log("on Save");
-                                // need to check change for save !!! or bug here
-                                putQuestion(question).then(reloadDB);
-                            }}
-                            onAdd={function (): void {
-                                addQuest();
-                            }}
-                            onDelete={function (): void {
-                                removeQuest(item._id);
-                            }}
-                        />
+                        <></>
                     );
                 })}
         </div>
