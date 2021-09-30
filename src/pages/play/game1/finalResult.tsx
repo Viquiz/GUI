@@ -1,41 +1,124 @@
-import React, { useEffect } from 'react'
-import {  Question } from "src/database";
+import React, { useEffect, useState } from "react";
+import { useSpring, animated, config } from "react-spring";
+import { IconContext } from "react-icons/lib";
+import { ImStarFull } from "react-icons/im";
 
-import circle from './img/circle.png'; 
-import sample from './img/sample.png'; 
-import triangle from './img/triangle.png'; 
-import pentagon from './img/pentagon.png'; 
-import rhombus from './img/Rhombus.png'; 
-import wrong from './img/wrong.png'; 
-
-export interface FinalResultPROP
-{ 
-    data?: unknown
+// move to database
+export interface StudentScore {
+    name: string,
+    score: number,
+    timeRespond?: number;
+}
+export interface FinalResultPROP {
+    students: StudentScore[],
+    maxScore: number;
 }
 
-const FinalResult:React.FC<FinalResultPROP> = (props) => {
+const TransitionScore = ({
+    data,
+    maxScore,
+    delay,
+    number,
+}: {
+    data: StudentScore;
+    maxScore: number;
+    delay: number;
+    number: number;
+}) => {
+    const props = useSpring({
+        to: { opacity: 1 },
+        from: { opacity: 0 },
+        delay: delay,
+        config: { duration: 1000 },
+    });
+    return (
+        <animated.div style={props}>
+            <IconContext.Provider
+                value={{
+                    size: "3em",
+                    // /* top 1: gold, 2: yellow, 3:  gray 4: white = no color*/
+                    color:
+                        number === 1
+                            ? "gold"
+                            : number === 2
+                            ? "yellow"
+                            : number === 3
+                            ? "gray"
+                            : "white",
+                    className: "global-class-name",
+                }}
+            >
+                <span className="relative flex justify-between container items-center">
+                    <span className="object-contain w-28">
+                        <span className="absolute mt-9 ml-10 text-gray-700">{number}</span>
+                        <ImStarFull />
+                    </span>
+                    <span className="m-6">
+                        {data.name} 
+                    </span>
+                    <span className="justify-end m-6 text-gray-500">{data.score}/{maxScore}</span>
+                </span>
+            </IconContext.Provider>
+        </animated.div>
+    );
+};
 
-	useEffect(()=>{
-		
-	},[])
+const FinalResult: React.FC<FinalResultPROP> = (props) => {
+    const [studentData,setStudentData] = useState(props.students);
 
-	return (
-        <div className="h-screen w-full ">
-            <div className = "flex h-1/2 content-evenly items-end">
-                <div className="flex h-full w-1/2 items-end">
-                    
-                    <div style={{height:"15%"}} className="h-full w-1/4 rounded-md bg-pink-400 m-2"> RESULT </div>
-                    <div style={{height:"30%"}} className="h-full w-1/4 rounded-md bg-green-200 m-2">RESULT </div>
-                    <div style={{height:"5%"}} className="h-full w-1/4 rounded-md bg-green-400 m-2">RESULT</div>
-                    <div style={{height:"50%"}} className="h-full w-1/4 rounded-md bg-indigo-500 m-2">RESULT</div>
+    // const [sortDecrease,setSortDecrease] = useState(props.maxScore);
+    const [rank,setRank] = useState<number[]>([]);
+
+    useEffect(() => {
+        //sort score
+        setStudentData(studentData.sort(((a,b)=> {
+            return b.score - a.score;
+        })));
+        //for case same rank  0 because +1
+        let rankcount = 1;
+        let sortDecrease = props.maxScore;
+
+        let tmpRank:number[] = [];
+
+        studentData.forEach(element => {
+            if(element.score < sortDecrease){
+                rankcount+=1;
+                sortDecrease = element.score;
+            }
+            tmpRank.push(rankcount);
+        });
+        
+        setRank(tmpRank);
+
+    }, [studentData, rank, props]);
+
+    return (
+        <div className="h-screen w-full overflow-y-auto">
+            {/* err */}
+            {studentData.length === 0 && (
+                <div className="grid justify-items-center">
+                    Opps No one to show
                 </div>
+            )}
+
+            {/* TOP row */}
+            {studentData.length !== 0 && <div className="grid justify-end w-2/3">
+                {studentData.map((student: StudentScore, index) => {
+                    return (
+                        <TransitionScore
+                            key = {index}
+                            data = {student}
+                            maxScore = {props.maxScore}
+                            // slowly show the result with in 7 seconds
+                            delay = {
+                                (7000 - index * 1000) > 0 ? (7000 - index * 1000) : 1000
+                            }
+                            number = {rank[index]}/>
+                    );
+                })}
             </div>
-
-        <div className = "absolute inset-x-0 bottom-20">
-            RESULT
+            }
         </div>
-
-        </div>
-	);
-}	
+    );
+};
 export default FinalResult;
