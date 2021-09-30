@@ -27,7 +27,7 @@ const GamePlay1: React.FC<GamePlayPROPS> = (props) => {
     let match = useRouteMatch<MatchParams>("/Quiz/:id");
 
     const [state, setState] = useState(parseInt(data.gameMode));
-    const [state2, setState2] = useState(0);
+    const [state2, setState2] = useState(2);
 
     useEffect(() => {
         // console.log("not loading db ... ");
@@ -49,16 +49,27 @@ const GamePlay1: React.FC<GamePlayPROPS> = (props) => {
         <div className="text-4xl">
             
             {/* Play game */}
-            {state2 == 0 && <div>
+            {state2 === 0 && <div>
                         <ProcessBar totalTime={parseInt(data.gameMode)} timeLeft={state} color = {(state / parseInt(data.gameMode)) * 100}/>
                         <PlayGame1 question={data}/>
                     </div>
             }
             {/* Each game result */}
-            {state2 == 1 && <TmpResult question={data}/>}
+            {state2 === 1 && <TmpResult question={data}/>}
 
             {/* final result */}
-            {state2 == 2 && <FinalResult/>}
+            {state2 === 2 && <FinalResult students = {
+                [
+                    {name:"Nguyen Thi Buoi", score: 97},
+                    {name:"Nguyen Van A", score: 100},
+                    {name:"Nguyen Van B", score: 100},
+                    {name:"Nguyen Van C", score: 98},
+                    {name:"Nguyen Van C", score: 94},
+                    {name:"Nguyen Van Teo", score: 96},
+                    {name:"Nguyen Thi Buoi", score: 93},
+                    {name:"Nguyen Van Thi E", score: 96},
+                    {name:"Nguyen Van Teo", score: 92}
+                ]} maxScore =  {100}/>}
         </div>
     );
 };
