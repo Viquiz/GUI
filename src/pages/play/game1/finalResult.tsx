@@ -75,8 +75,8 @@ const FinalResult: React.FC<FinalResultPROP> = (props) => {
             return b.score - a.score;
         })));
         //for case same rank  0 because +1
-        let rankcount = 1;
-        let sortDecrease = props.maxScore;
+        let rankcount = 0;
+        let sortDecrease = props.maxScore + 1; // should alway count first time
 
         let tmpRank:number[] = [];
 
@@ -90,7 +90,7 @@ const FinalResult: React.FC<FinalResultPROP> = (props) => {
         
         setRank(tmpRank);
 
-    }, [studentData, rank, props]);
+    }, []);
 
     return (
         <div className="h-screen w-full overflow-y-auto">

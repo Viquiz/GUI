@@ -33,6 +33,10 @@ const MenuItems = [{
 	component: QuizDashBoard,
 },
 {
+    to:"/GamePlay1/:id",
+    component: GamePlay1,
+},
+{
 	id:1,
 	to:"/QuizEditor",
 	display:"All Question",
@@ -45,13 +49,6 @@ const MenuItems = [{
 	display:"Setting",
 	component: Setting,
 	icon: <BsGearFill/>
-},
-{
-	id:3,
-	to:"/GamePlay1",
-	display:"GamePlay1",
-	component: GamePlay1,
-	icon: <BsController/>
 },
 ]
 

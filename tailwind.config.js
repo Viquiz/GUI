@@ -2,7 +2,13 @@ let titleBar_heigh=30
 let sideBar_width=170
 
 module.exports = {
-  purge: [],
+    purge: {
+        enabled: process.env.NODE_ENV === 'production',
+        content: [
+          // TypeScript
+          '*.tsx',
+        ]
+      },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
