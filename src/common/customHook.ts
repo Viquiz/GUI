@@ -29,20 +29,23 @@ export function useAsyncPreValue<T>(callback:() => Promise<T>,defaultValue?:T, d
 	const [trigger,setTrigger] = useState(false);
 	const [value, setValue] = useState<T|undefined>(defaultValue);
 	const [error, setError] = useState(undefined);
-	const callbackMemorize = useCallback(()=>{
-		setLoading(true);
+	const callbackMemorize = useCallback((isMounted:boolean)=>{
+		if(isMounted)
+		{setLoading(true);
 		setError(undefined);
 		//this function prevent setting value to undefined 
 		//because every time we set value to undefine the previous rendered component might by remove then create (which cause multiple render of un-change component)
 		callback()
 			.then(setValue)
 			.catch(setError)
-			.finally(()=>setLoading(false))
+			.finally(()=>setLoading(false))}
 	},dependencies)
 	useEffect(()=>{
-		callbackMemorize()
+		let isMounted = true
+		callbackMemorize(isMounted);
+		return ()=> {isMounted = false};
 	},[callbackMemorize,trigger])
-	return {loading,error,value,trigger:callbackMemorize}
+	return {loading,error,value,trigger:()=>setTrigger(false)}
 }
 function clamp(min:number,max:number,value:number)
 {
@@ -64,3 +67,36 @@ export function useToggle<T>(state:T[]):[T,()=>void]{
 	return [value,NextValue]
 	
 }
+
+export function useValueDebounce<T>(value:T, delay:number) {
+	// State and setters for debounced value
+	const [debouncedValue, setDebouncedValue] = useState(value);
+	useEffect(
+	  () => {
+	    // Update debounced value after delay
+	    const handler = setTimeout(() => {
+	      setDebouncedValue(value);
+	    }, delay);
+	    // Cancel the timeout if value changes (also on delay change or unmount)
+	    // This is how we prevent debounced value from updating if value is changed ...
+	    // .. within the delay period. Timeout gets cleared and restarted.
+	    return () => {
+	      clearTimeout(handler);
+	    };
+	  },
+	  [value, delay] // Only re-call effect if value or delay changes
+	);
+	return debouncedValue;
+}
+
+function usePrevious<T>(value:T) {
+	// The ref object is a generic container whose current property is mutable ...
+	// ... and can hold any value, similar to an instance property on a class
+	const ref = useRef<T>();
+	// Store current value in ref
+	useEffect(() => {
+	  ref.current = value;
+	}, [value]); // Only re-run if value changes
+	// Return previous value (happens before update in useEffect above)
+	return ref.current;
+ }

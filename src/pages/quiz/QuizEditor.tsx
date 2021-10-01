@@ -68,13 +68,6 @@ const QuizEditor: React.FC<PROPS> = (props) => {
                     onClick={() => addQuest()}
                 />
             </div>
-            {value &&
-                (value as unknown as Question[]).map((item) => {
-                    
-                    return (
-                        <></>
-                    );
-                })}
         </div>
     );
 };

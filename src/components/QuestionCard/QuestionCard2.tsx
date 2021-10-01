@@ -48,7 +48,7 @@ function QuestionCard({question,...props}:QuestionCARD_PROPS){
 				<div className="w-full h-full grid grid-cols-2 gap-6 z-0">
 					    {(question.answers as answer[]).map((item,index)=>{
 						    return (
-							    <div className={`text-white p-5 h-20 ${item.isCorrect ? 'bg-green-600':'bg-red-500'}`}>{item.text}
+							    <div key={index} className={`text-white p-5 h-20 ${item.isCorrect ? 'bg-green-600':'bg-red-500'}`}>{item.text}
 							    </div>
 						    );
 					    })
