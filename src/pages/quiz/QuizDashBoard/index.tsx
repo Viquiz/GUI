@@ -5,10 +5,11 @@ import {QuestionCard,QuestionEditor} from "@components/QuestionCard";
 import { omit, values } from "@fluentui/utilities";
 import { ModalWrapper } from "@components/Modal";
 import { Button } from "@components/button";
-import { CommandBar, Depths, Stack, StackItem, TextField } from "@fluentui/react";
+import { CommandBar, DefaultButton, Depths, Separator, Stack, StackItem, TextField } from "@fluentui/react";
 import { useValueDebounce } from "@common/customHook";
 import { MultilineEditableField, SingleLineEditableField } from "@components/EditableField";
 import { useHistory } from "react-router";
+import { addIcon } from "@common/icon";
 type PROPS = {
     t: string;
     [k: string]: any;
@@ -67,9 +68,10 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
         (async function(){
             if(debounceValue && debounceValue.Quiz)
             {
+                console.log('saving');
                 let response = await putQuestionSet({...debounceValue.Quiz,edit:Date.now()});
-                console.log(response);
                 setValue((value) => {
+                    console.log('saved');
                     return {...value,Quiz:{...value?.Quiz,_rev:response.rev,edit:Date.now()}} as QuizData
                 });
             }
@@ -77,7 +79,7 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
         return ()=>{
             //clean up code
         }
-    },[debounceValue?.Quiz.title,debounceValue?.Quiz.description,debounceValue?.Quiz.Class])
+    },[debounceValue?.Quiz.title,debounceValue?.Quiz.description,debounceValue?.Quiz.Class,debounceValue?.Quiz.questions])
 
     function setTitle(_value:string){
         setValue(value => ({
@@ -95,10 +97,29 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
         } as QuizData))
     }
     async function AddQuestion(){
-    
+        console.log('add question')
+        const template  = CreateQuestionTemplate();
+        template._id = String(Date.now());
+        let response = await putQuestion(template);
+        if(response.ok)
+            {
+                template._rev = response.rev;
+                setValue((v)=>{
+                    let arr:Question[] = [...(v?.Questions?? [])];
+                    arr.push(template);
+                    const v2 = {...v?.Quiz}
+                    const k = new Set(v2.questions as string[]);
+                    k.add(template._id);
+                    v2.questions = [...k]
+                    return {Quiz:v2,Questions:arr} as QuizData;
+                })
+            }
     }
-    async function DeleteQuestion(id:string){
-
+    async function DeleteQuestion(id:string){ 
+            setValue((v)=>{
+                const v2 = {...v?.Quiz,questions:(v?.Quiz.questions as string[]).filter(item => item !== id)} as QuestionSet;
+                return {Questions:value?.Questions.filter(item => item._id !== id),Quiz:v2} as QuizData;
+            })
     }
     
     if(mode < 0)
@@ -187,6 +208,7 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
                                         iconProps: { iconName: 'Play'},
                                         onClick: () => {history.push(`/GamePlay1/${props.match.params.id}`)},
                                         }]}></CommandBar>
+                            
                 </Stack>
                 <div className="flex justify-items-start items-center content-start flex-col w-full flex-grow  overflow-y-scroll">
                     {value?.Questions.map((value,index)=> <QuestionCard key={value._id} question={value} onSave={function (question: Question): void {
@@ -199,8 +221,14 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
                         setMode(index);
                     } }/>
                     )}
+                    {!value?.Questions.length && 
+                            <Separator>
+                                    <DefaultButton text='ADD QUESTION' iconProps={addIcon}
+                                    onClick={AddQuestion}/>
+                            </Separator>}
                     <Button onClick={AddQuestion} className="h-14 w-56 bg-button-primary fixed bottom-0 right-0"></Button>
                 </div>
+                
             </div>
                 )
     }

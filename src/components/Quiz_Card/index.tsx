@@ -5,18 +5,22 @@ import { BsPlay } from "react-icons/bs"
 import { IconContext } from "react-icons"
 import { QuestionSet } from "src/database"
 
-const Quiz_card:React.FC<QuestionSet> = (props)=>
+interface  props{
+	Quiz: QuestionSet
+	[key:string]:unknown
+}
+const Quiz_card:React.FC<props> = ({Quiz:props,..._props})=>
 {
 	const {url} = useRouteMatch()
-	const date = new Date(props.create)
+	const date = new Date(props.edit)
 	return(
-		<div className={`card border-b border-gray-500`}>
+		<div className={`card border-b border-gray-500 p-5`}>
 			{/* ADD moving to edit page */}
 			<div className="card--image">
 				{/* <img src="" alt="thumbnail"/> */}
 			</div>
 			<div className="card--info">
-				<div className="card--info--name">
+				<div className="card--info--name text-xl font-bold">
 					{props.title}
 				</div>
 				<div className="card--info--description">
@@ -34,7 +38,7 @@ const Quiz_card:React.FC<QuestionSet> = (props)=>
 			</div>
 			<div>
 				{/* edit and remove button ? */}
-				{props.children}
+				{_props.children}
 			</div>
 		</div>
 	)

@@ -18,16 +18,49 @@ import {
 
 import {Button} from "@components/button";
 import { useAsync, useAsyncPreValue } from "@common/customHook";
+import { DetailsList, IColumn, SelectionMode } from "@fluentui/react";
 
 type PROPS = {
     t: string;
     [k: string]: unknown;
 };
 
+const DisplayColumns:IColumn[] = [{
+    key:'title',
+    name:'Title',
+    fieldName:'title',
+    minWidth:700,
+    maxWidth:700,
+    onRender:(item:QuestionSet) => {console.log(item); return <div>{item.title}</div>}
 
-// const exq: questionIDs = [
-// 	"1234", "12112"
-// ]
+},
+{
+    key:'desc',
+    name:'Description',
+    fieldName:'description',
+    minWidth:700,
+    maxWidth:700,
+    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+
+
+},
+{
+    key:'class',
+    name:'Class',
+    fieldName:'class',
+    minWidth:700,
+    maxWidth:700,
+    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+},
+{
+    key:'edited',
+    name:'Last modified',
+    fieldName:'description',
+    minWidth:0,
+    maxWidth:150,
+    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+}
+]
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
     const {loading,value,error,trigger} = useAsyncPreValue(getAllQuestionSet);
@@ -52,18 +85,18 @@ const QuizManager: React.FC<PROPS> = (props) => {
 	},[error])
     return (
         <div className="h-full flex flex-col justify-start">
-            <div
-                style={{
-                    height: "50px",
-                    backgroundColor: "green",
-                }}
-            >
-                Functionality
-            </div>
             <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                {value?(value as QuestionSet[]).map((item) => (
+                <DetailsList columns={DisplayColumns} 
+                items={value?.map(item=>{
+                    item.key = item._id;
+                    return (item);
+                    }) as any[] ?? []}
+                    selectionMode={SelectionMode.none}
+                >
+                </DetailsList>
+                {/* {value?(value as QuestionSet[]).map((item) => (
                     <Link key={item._id} to={`${(props.match as any).path}/${item._id}`}>
-                        <Quiz_card key={item._id}  {...item}>
+                        <Quiz_card key={item._id} Quiz={item}>
                             <Button
                                 disabled={false}
                                 className="bg-button-primary"
@@ -72,7 +105,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                             />
                         </Quiz_card>
                     </Link>
-                )):loading?"loading":"failed to load"}
+                )):loading?"loading":"failed to load"} */}
             </div>
             <div
                 style={{
