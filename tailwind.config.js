@@ -74,6 +74,7 @@ module.exports = {
       scale:['active'],
       transform:['active'],
       borderWidth: ['hover', 'focus-within'],
+      cursor: ['hover', 'focus'],
     },
   },
   plugins: [],

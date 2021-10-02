@@ -5,8 +5,10 @@ import {QuestionCard,QuestionEditor} from "@components/QuestionCard";
 import { omit, values } from "@fluentui/utilities";
 import { ModalWrapper } from "@components/Modal";
 import { Button } from "@components/button";
-import { TextField } from "@fluentui/react";
+import { CommandBar, TextField } from "@fluentui/react";
 import { useValueDebounce } from "@common/customHook";
+import { MultilineEditableField, SingleLineEditableField } from "@components/EditableField";
+import { useHistory } from "react-router";
 type PROPS = {
     t: string;
     [k: string]: any;
@@ -30,7 +32,7 @@ function CreateQuestionTemplate():Question{
     return template
 };
 
-interface Quiz extends Omit<QuestionSet,'id'|'_rev'>{};
+
 
 interface QuizData{
     Quiz:QuestionSet,
@@ -41,6 +43,7 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
     const [value,setValue] = useState<QuizData|null>(null);
     const [mode,setMode] = useState<number>(-1);
     const  debounceValue = useValueDebounce(value,1000);
+    const history = useHistory();
     //get question set
     //mode  => preview - edit
     //edit mode show Question editor with question gallery
@@ -97,16 +100,48 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
     {
         return (
             <div className="w-full h-full flex flex-col">
-                <div>
-                    <TextField value={value?.Quiz.title ?? ''} onChange={(evt)=>{
-                        setTitle(evt.currentTarget.value);
-                    }}/>
-                    <TextField value={value?.Quiz.Class ?? ''} onChange={(evt)=>{
-                        setClass(evt.currentTarget.value);
-                    }}/>
-                    <TextField value={value?.Quiz.description ?? ''} onChange={(evt)=>{
-                        setDescription(evt.currentTarget.value);
-                    }}/>
+                <div className='w-full flex flex-col justify-start items-start min-h-14 p-2'>
+                                <div className="w-800px overflow-hidden flex justify-start">
+                                    <SingleLineEditableField
+                                    
+                                    className={`
+                                    overflow-hidden
+                                    rounded-md
+                                    border-2
+                                    border-transparent
+                                    focus-within:border-button-primary
+                                    hover:border-gray-500
+                                    font-extrabold
+                                    max-w-full
+                                    text-4xl`}
+                                    value={value?.Quiz.title}
+                                    onChange={function (evt){
+                                        setTitle(evt.target.value);
+                                     } }></SingleLineEditableField>
+                                </div>
+                            <MultilineEditableField
+                            className={`
+                            block
+                            p-2
+                            h-14
+                            w-800px
+                            resize-none 
+                            text-md
+                            outline-none 
+                            hover:underline
+                            `}
+                            value={value?.Quiz.description}
+                            onChange={function (evt){
+                                setDescription(evt.target.value);
+                             } }></MultilineEditableField>
+                             <CommandBar 
+                             items={[
+                                 {
+                                    key: 'play',
+                                    text: 'PLAY',
+                                    iconProps: { iconName: 'Play'},
+                                    onClick: () => {history.push(`/GamePlay1/${props.match.params.id}`)},
+                                    }]}></CommandBar>
                 </div>
                 <div className="flex justify-items-start items-center content-start flex-col w-full flex-grow  overflow-y-scroll">
                     {value?.Questions.map((value,index)=> <QuestionCard key={value._id} question={value} onSave={function (question: Question): void {
@@ -128,7 +163,12 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
          <div className="w-full h-full relative">
              <QuestionEditor 
                      onSave={async function (value: Question) {
-                await  putQuestion(value);
+                            const response = await  putQuestion(value);
+                            setValue(v =>{
+                                const arr = [...(v?.Questions as Question[])]
+                                arr[mode] = {...value,_rev:response.rev}
+                                return {...v,Questions:arr} as QuizData
+                            })
                      } } 
                      onBack={function (): void {
                 // pop up modal to check if user wanna save
