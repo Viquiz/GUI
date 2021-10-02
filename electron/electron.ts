@@ -1,5 +1,4 @@
 import {app, BrowserWindow, globalShortcut, ipcMain} from "electron";
-import PouchDB from 'pouchdb';
 import path from "path";
 
 let window:BrowserWindow;

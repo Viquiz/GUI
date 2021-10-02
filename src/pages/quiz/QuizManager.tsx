@@ -5,6 +5,7 @@ import {
     Link,
     Route,
     Switch,
+    useHistory,
     useParams,
     useRouteMatch,
 } from "react-router-dom";
@@ -31,16 +32,16 @@ const DisplayColumns:IColumn[] = [{
     fieldName:'title',
     minWidth:700,
     maxWidth:700,
-    onRender:(item:QuestionSet) => {console.log(item); return <div>{item.title}</div>}
+    onRender:(item:QuestionSet) => { return <div>{item.title}</div>}
 
 },
 {
     key:'desc',
     name:'Description',
     fieldName:'description',
-    minWidth:700,
-    maxWidth:700,
-    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+    minWidth:300,
+    maxWidth:300,
+    onRender:(item:QuestionSet) => { return  <div className='w-full overflow-hidden overflow-ellipsis'>{item.description}</div>}
 
 
 },
@@ -48,9 +49,9 @@ const DisplayColumns:IColumn[] = [{
     key:'class',
     name:'Class',
     fieldName:'class',
-    minWidth:700,
-    maxWidth:700,
-    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+    minWidth:50,
+    maxWidth:50,
+    onRender:(item:QuestionSet) => {return  <div>{item.Class}</div>}
 },
 {
     key:'edited',
@@ -58,11 +59,14 @@ const DisplayColumns:IColumn[] = [{
     fieldName:'description',
     minWidth:0,
     maxWidth:150,
-    onRender:(item:QuestionSet) => {console.log(item); return  <div>{item.description}</div>}
+    onRender:(item:QuestionSet) => {
+        const date = new Date(item.edit);
+        return  <div>{`${date.toLocaleDateString('vi')} - ${date.toLocaleTimeString('vi')}`}</div>}
 }
 ]
 const QuizManager: React.FC<PROPS> = (props) => {
     const { url } = useRouteMatch();
+    const history = useHistory();
     const {loading,value,error,trigger} = useAsyncPreValue(getAllQuestionSet);
     const addSet = () => {
         let templateCardPROPS: QuestionSet = {
@@ -80,18 +84,22 @@ const QuizManager: React.FC<PROPS> = (props) => {
         removeQuestionSet(_id).then(()=> trigger())
     };
 
-    useEffect(()=>{
-		console.log(props.match);
-	},[error])
+    function onItemInvoke(item:QuestionSet)
+    {
+        history.push(`${(props.match as any).path }/${item._id}`)
+    }
     return (
         <div className="h-full flex flex-col justify-start">
             <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                <DetailsList columns={DisplayColumns} 
+                <DetailsList
+                styles={{root:{fontSize:'24px'}}}
+                columns={DisplayColumns} 
                 items={value?.map(item=>{
                     item.key = item._id;
                     return (item);
                     }) as any[] ?? []}
                     selectionMode={SelectionMode.none}
+                    onItemInvoked={onItemInvoke}
                 >
                 </DetailsList>
                 {/* {value?(value as QuestionSet[]).map((item) => (
