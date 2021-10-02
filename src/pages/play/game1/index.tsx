@@ -38,7 +38,7 @@ const GamePlay1: React.FC<GamePlayPROPS> = (props) => {
 
 
     const [countDown, setCountDown] = useState(parseInt(data.gameMode));
-    const [questionCount, setQuestionCount] = useState(0);
+    const [questionCount, setQuestionCount] = useState(0); 
     const [showTmpResult, setShowTmpResult] = useState(false);
 
     const tmpScoreWaitTime = 5;
@@ -75,7 +75,7 @@ const GamePlay1: React.FC<GamePlayPROPS> = (props) => {
 
                 /* Play game */
                 (questionCount < value.Questions.length && !showTmpResult)? 
-                <div>
+                <div className="h-screen w-full">
                     <ProcessBar totalTime={parseInt(data.gameMode)} timeLeft={countDown} color = {(countDown / parseInt(data.gameMode)) * 100}/>
                     <PlayGame1 question={(value?.Questions[questionCount] as Question)}/>
                     <QuestionShow data={(value?.Questions[questionCount] as Question)} showCorrectAnswer = {false}/>

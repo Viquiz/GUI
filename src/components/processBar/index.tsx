@@ -14,11 +14,11 @@ const ProcessBar:React.FC<processBar_PROPS> = (props) => {
 	},[])
 
 	return (
-            <div className="w-full ">
+            <div className="w-full">
                 <div className="relative pt-1">
                 </div>
                 <div className="relative">
-                    <div className="overflow-hidden h-8 mb-4 flex rounded bg-gray-300 text-center">
+                    <div className="overflow-hidden h-8 m-1 flex rounded bg-gray-300 text-center">
                         <div
                             style={{
                                 width:  "" + (props.timeLeft/props.totalTime)*100 + "%",

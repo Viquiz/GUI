@@ -34,7 +34,8 @@ const QuestionShow: React.FC<{ data: Question, showCorrectAnswer?:boolean}> = (p
             <div className="flex justify-around h-1/2">
                 {props.data.answers.length &&
                     <TransitionFade delay={0} cancle = {props.showCorrectAnswer}>
-                        <div style={{ width: "40vw", height: "20vh", fontSize: "110px" }} className="flex" >
+                        {/* , fontSize: "110px"  */}
+                        <div style={{ width: "40vw" }} className="flex" > 
                             <div className="object-contain">
                                 <img height={100} width={100} className="absolute" src={circle} alt="where?" />
                                 {props.showCorrectAnswer && 
@@ -53,7 +54,7 @@ const QuestionShow: React.FC<{ data: Question, showCorrectAnswer?:boolean}> = (p
 
                 {props.data.answers.length > 1 &&
                 <TransitionFade delay={500} cancle = {props.showCorrectAnswer}>
-                    <div style={{ width: "40vw", fontSize: "110px" }} className="flex" >
+                    <div style={{ width: "40vw" }} className="flex" >
                         <div className="object-contain">
                             <img height={100} width={100} className="absolute" src={triangle} alt="triangle" />
                             {props.showCorrectAnswer && 
@@ -68,14 +69,12 @@ const QuestionShow: React.FC<{ data: Question, showCorrectAnswer?:boolean}> = (p
                     </div>
                 </TransitionFade>
                 }
-            </div>
-
-            <div className="p-8 " />
+            </div>  
 
             <div className="flex justify-around">
                 {props.data.answers.length > 2 &&
                 <TransitionFade delay={1000} cancle = {props.showCorrectAnswer}>
-                    <div style={{ width: "40vw", height: "20vh", fontSize: "110px" }} className="flex" >
+                    <div style={{ width: "40vw"}} className="flex" >
                         <div className="object-contain">
                             <img height={100} width={100} className="absolute" src={rhombus} alt="where?" />
                             {props.showCorrectAnswer && 
@@ -94,7 +93,7 @@ const QuestionShow: React.FC<{ data: Question, showCorrectAnswer?:boolean}> = (p
 
                 {props.data.answers.length > 3 &&
                 <TransitionFade delay={1500} cancle = {props.showCorrectAnswer}>
-                    <div style={{ width: "40vw", fontSize: "110px" }} className="flex" >
+                    <div style={{ width: "40vw"}} className="flex" >
                         <div className="object-contain">
                             <img height={100} width={100} className="absolute" src={pentagon} alt="where?" />
                             {props.showCorrectAnswer && 
