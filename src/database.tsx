@@ -11,7 +11,7 @@ export interface QuestionSet
 	title:string
 	description:string
 	create:string
-	edit:string
+	edit:string|number
 	Class:string
 	questions: questionIDs
 	[k: string]: unknown

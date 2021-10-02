@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {getQuestionsByQuestionSet, getQuestionSet, putQuestion, putQuestionSet, Question, QuestionSet } from "../../../database";
 import { useAsyncPreValue } from "@common/customHook";
 import {QuestionCard,QuestionEditor} from "@components/QuestionCard";
 import { omit, values } from "@fluentui/utilities";
 import { ModalWrapper } from "@components/Modal";
 import { Button } from "@components/button";
-import { CommandBar, TextField } from "@fluentui/react";
+import { CommandBar, Depths, Stack, StackItem, TextField } from "@fluentui/react";
 import { useValueDebounce } from "@common/customHook";
 import { MultilineEditableField, SingleLineEditableField } from "@components/EditableField";
 import { useHistory } from "react-router";
@@ -44,6 +44,10 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
     const [mode,setMode] = useState<number>(-1);
     const  debounceValue = useValueDebounce(value,1000);
     const history = useHistory();
+    const lastEdit = useMemo(() =>{
+        const date = new Date(value?.Quiz.edit ?? Date.now());
+        return `${date.toLocaleDateString('vi')} - ${date.toLocaleTimeString('vi')}`;
+    }, [value?.Quiz.edit])
     //get question set
     //mode  => preview - edit
     //edit mode show Question editor with question gallery
@@ -63,10 +67,10 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
         (async function(){
             if(debounceValue && debounceValue.Quiz)
             {
-                let response = await putQuestionSet({...debounceValue.Quiz,edit:new Date().toJSON()});
+                let response = await putQuestionSet({...debounceValue.Quiz,edit:Date.now()});
                 console.log(response);
                 setValue((value) => {
-                    return {...value,Quiz:{...value?.Quiz,_rev:response.rev,edit:new Date().toJSON()}} as QuizData
+                    return {...value,Quiz:{...value?.Quiz,_rev:response.rev,edit:Date.now()}} as QuizData
                 });
             }
         })();
@@ -96,53 +100,94 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
     async function DeleteQuestion(id:string){
 
     }
+    
     if(mode < 0)
     {
         return (
             <div className="w-full h-full flex flex-col">
-                <div className='w-full flex flex-col justify-start items-start min-h-14 p-2'>
-                                <div className="w-800px overflow-hidden flex justify-start">
-                                    <SingleLineEditableField
-                                    
+                
+                {/* <Stack className='w-full min-h-14 ms-depth-16 flex justify-between flex-col' style={{boxShadow:Depths.depth8}}> */}
+                <Stack style={{boxShadow:Depths.depth8}}>
+                            <Stack horizontal>
+                                <Stack.Item grow style={{width:'800px'}}>
+                                    <div className="w-800px overflow-hidden m-2">
+                                            <SingleLineEditableField
+                                
+                                            className={`
+                                            overflow-hidden
+                                            rounded-md
+                                            border-2
+                                            border-transparent
+                                            focus-within:border-button-primary
+                                            hover:border-gray-500
+                                            font-extrabold
+                                            max-w-full
+                                
+                                            text-4xl`}
+                                            value={value?.Quiz.title}
+                                            onChange={function (evt){
+                                                setTitle(evt.target.value);
+                                             } }/>
+                                        </div>
+                                    <MultilineEditableField
                                     className={`
-                                    overflow-hidden
-                                    rounded-md
-                                    border-2
+                                    block
+                                    ml-4
+                                    p-2
+                                    h-14
+                                    w-800px
+                                    resize-none
+                                    text-md
+                                    outline-none
+                                    hover:underline
+                                    border
                                     border-transparent
-                                    focus-within:border-button-primary
-                                    hover:border-gray-500
-                                    font-extrabold
-                                    max-w-full
-                                    text-4xl`}
-                                    value={value?.Quiz.title}
+                                    hover:border-gray-900
+                                    focus:border-button-primary
+                                    `}
+                                    value={value?.Quiz.description}
                                     onChange={function (evt){
-                                        setTitle(evt.target.value);
-                                     } }></SingleLineEditableField>
-                                </div>
-                            <MultilineEditableField
-                            className={`
-                            block
-                            p-2
-                            h-14
-                            w-800px
-                            resize-none 
-                            text-md
-                            outline-none 
-                            hover:underline
-                            `}
-                            value={value?.Quiz.description}
-                            onChange={function (evt){
-                                setDescription(evt.target.value);
-                             } }></MultilineEditableField>
-                             <CommandBar 
-                             items={[
-                                 {
-                                    key: 'play',
-                                    text: 'PLAY',
-                                    iconProps: { iconName: 'Play'},
-                                    onClick: () => {history.push(`/GamePlay1/${props.match.params.id}`)},
-                                    }]}></CommandBar>
-                </div>
+                                        setDescription(evt.target.value);
+                                     } }/>
+                                </Stack.Item>
+                                <Stack.Item grow align="start">
+                               
+                                    <div className="flex justify-start items-center text-lg">
+                                        <span className='pb-2 font-extrabold'>Class:</span>
+                                        <span className="inline-block w-28 overflow-hidden">
+                                                    <SingleLineEditableField
+                                        
+                                                    className={`
+                                                    
+                                        
+                                                    overflow-hidden
+                                                    rounded-md
+                                                    border-2
+                                                    border-transparent
+                                                    focus-within:border-button-primary
+                                                    hover:border-gray-500
+                                                    max-w-full`}
+                                                    value={value?.Quiz.Class}
+                                                    onChange={function (evt){
+                                                        setClass(evt.target.value);
+                                                     } }/>
+                                        </span>
+                                    </div>
+                                    <div className="flex justify-start items-center text-lg">
+                                        <span className='font-extrabold mr-2'>{`Last edit:   `}</span>{lastEdit}
+                                    </div>
+                                </Stack.Item>
+                            </Stack>
+                                 <CommandBar
+                                 styles={{root:{borderBottom:'',borderTop:''}}}
+                                 items={[
+                                     {
+                                        key: 'play',
+                                        text: 'PLAY',
+                                        iconProps: { iconName: 'Play'},
+                                        onClick: () => {history.push(`/GamePlay1/${props.match.params.id}`)},
+                                        }]}></CommandBar>
+                </Stack>
                 <div className="flex justify-items-start items-center content-start flex-col w-full flex-grow  overflow-y-scroll">
                     {value?.Questions.map((value,index)=> <QuestionCard key={value._id} question={value} onSave={function (question: Question): void {
                         throw new Error("Function not implemented.");

@@ -64,9 +64,6 @@ const QuizManager: React.FC<PROPS> = (props) => {
                 {value?(value as QuestionSet[]).map((item) => (
                     <Link key={item._id} to={`${(props.match as any).path}/${item._id}`}>
                         <Quiz_card key={item._id}  {...item}>
-                            <Link key={item._id} to={`/GamePlay1/${item._id}`} className="bg-button-primary">
-                                Play
-                            </Link>
                             <Button
                                 disabled={false}
                                 className="bg-button-primary"
