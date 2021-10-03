@@ -29,23 +29,26 @@ export function useAsyncPreValue<T>(callback:() => Promise<T>,defaultValue?:T, d
 	const [trigger,setTrigger] = useState(false);
 	const [value, setValue] = useState<T|undefined>(defaultValue);
 	const [error, setError] = useState(undefined);
-	const callbackMemorize = useCallback((isMounted:boolean)=>{
-		if(isMounted)
-		{setLoading(true);
+	const callbackMemorize = useCallback((unmounted:boolean)=>{
+		if(unmounted){
+			setLoading(true);
 		setError(undefined);
+		console.log('loading')
 		//this function prevent setting value to undefined 
 		//because every time we set value to undefine the previous rendered component might by remove then create (which cause multiple render of un-change component)
 		callback()
-			.then(setValue)
-			.catch(setError)
-			.finally(()=>setLoading(false))}
+			.then((v)=>unmounted?setValue(v):{})
+			.catch((v)=>unmounted?setError(v):{})
+			.finally(()=>unmounted?setLoading(false):{})
+		}
+		
 	},dependencies)
 	useEffect(()=>{
-		let isMounted = true
-		callbackMemorize(isMounted);
-		return ()=> {isMounted = false};
+		let unmounted = true;
+		callbackMemorize(unmounted);
+		return ()=> {unmounted = false};
 	},[callbackMemorize,trigger])
-	return {loading,error,value,trigger:()=>setTrigger(false)}
+	return {loading,error,value,trigger:()=>setTrigger(v=>!v)}
 }
 function clamp(min:number,max:number,value:number)
 {

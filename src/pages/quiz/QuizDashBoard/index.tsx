@@ -226,7 +226,6 @@ const QuizDashBoard: React.FC<PROPS> = (props) => {
                                     <DefaultButton text='ADD QUESTION' iconProps={addIcon}
                                     onClick={AddQuestion}/>
                             </Separator>}
-                    <Button onClick={AddQuestion} className="h-14 w-56 bg-button-primary fixed bottom-0 right-0"></Button>
                 </div>
                 
             </div>

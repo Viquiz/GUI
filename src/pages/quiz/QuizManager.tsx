@@ -30,17 +30,17 @@ const DisplayColumns:IColumn[] = [{
     key:'title',
     name:'Title',
     fieldName:'title',
-    minWidth:700,
+    minWidth:500,
     maxWidth:700,
-    onRender:(item:QuestionSet) => { return <div>{item.title}</div>}
+    onRender:(item:QuestionSet) => { return <div className='text-xl'>{item.title}</div>}
 
 },
 {
     key:'desc',
     name:'Description',
     fieldName:'description',
-    minWidth:300,
-    maxWidth:300,
+    minWidth:150,
+    maxWidth:150,
     onRender:(item:QuestionSet) => { return  <div className='w-full overflow-hidden overflow-ellipsis'>{item.description}</div>}
 
 
@@ -57,11 +57,11 @@ const DisplayColumns:IColumn[] = [{
     key:'edited',
     name:'Last modified',
     fieldName:'description',
-    minWidth:0,
-    maxWidth:150,
+    minWidth:125,
+    maxWidth:125,
     onRender:(item:QuestionSet) => {
         const date = new Date(item.edit);
-        return  <div>{`${date.toLocaleDateString('vi')} - ${date.toLocaleTimeString('vi')}`}</div>}
+        return  <div className='font-bold'>{`${date.toLocaleDateString('vi')} - ${date.toLocaleTimeString('vi')}`}</div>}
 }
 ]
 const QuizManager: React.FC<PROPS> = (props) => {
@@ -90,30 +90,20 @@ const QuizManager: React.FC<PROPS> = (props) => {
     }
     return (
         <div className="h-full flex flex-col justify-start">
-            <div className="flex-1 overflow-x-hidden overflow-y-scroll min-h-0 pb-8">
-                <DetailsList
-                styles={{root:{fontSize:'24px'}}}
-                columns={DisplayColumns} 
-                items={value?.map(item=>{
-                    item.key = item._id;
-                    return (item);
-                    }) as any[] ?? []}
-                    selectionMode={SelectionMode.none}
-                    onItemInvoked={onItemInvoke}
-                >
-                </DetailsList>
-                {/* {value?(value as QuestionSet[]).map((item) => (
-                    <Link key={item._id} to={`${(props.match as any).path}/${item._id}`}>
-                        <Quiz_card key={item._id} Quiz={item}>
-                            <Button
-                                disabled={false}
-                                className="bg-button-primary"
-                                text="remove"
-                                onClick={() => removeQuest(item._id)}
-                            />
-                        </Quiz_card>
-                    </Link>
-                )):loading?"loading":"failed to load"} */}
+            <div className="flex-1 overflow-x-hidden overflow-y-scroll w-full min-h-0 ">
+                <div className=" max-w-64xl mx-auto">
+                    <DetailsList
+                    styles={{root:{fontSize:'24px',margin:'auto',width:'100%'}}}
+                    columns={DisplayColumns}
+                    items={value?.map(item=>{
+                        item.key = item._id;
+                        return (item);
+                        }) as any[] ?? []}
+                        selectionMode={SelectionMode.none}
+                        onItemInvoked={onItemInvoke}
+                    >
+                    </DetailsList>
+                </div>
             </div>
             <div
                 style={{
@@ -125,7 +115,7 @@ const QuizManager: React.FC<PROPS> = (props) => {
                     disabled={false}
                     className="bg-button-primary"
                     text="Add new set"
-                    onClick={() => addSet()}
+                    onClick={addSet}
                 />
             </div>
         </div>
