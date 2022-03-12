@@ -3,20 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "main": "electron.js",
+  "scripts": {
+    "startWDB": "concurrently \"yarn run server\" \"set PORT=13125 && yarn run start:web\"",
+    "start": "set PORT=13125 && yarn run start:web",
+    "start:all": "concurrently \"set PORT=13125 && yarn run start:web\" \"yarn run start:desktop\"",
+    "server": "pouchdb-server -d ./localDB --port 5984",
+    "start:server": "pouchdb-server -d ./localDB --port 5984",
+    "start:web": "craco start",
+    "build:web": "craco build",
+    "test:web": "craco test",
+    "build:desktop": "npx tsc -p ./electron",
+    "start:desktop": "yarn run build:desktop && electron ./build/electron.js",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/pouchdb": "^6.4.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-router": "^5.1.16",
-    "@types/react-router-dom": "^5.1.8",
-    "@types/styled-components": "^5.1.14",
     "d3": "^7.1.0",
     "lodash": "^4.17.21",
+    "node-sass": "^7.0.1",
     "pouchdb": "^7.2.2",
     "pouchdb-server": "^4.2.0",
     "react": "^17.0.2",
@@ -32,48 +51,29 @@
     "typescript": "^4.4.3",
     "web-vitals": "^1.0.1"
   },
-  "scripts": {
-    "startWDB": "concurrently \"yarn run server\" \"set PORT=13125 && yarn run start:web\"  ",
-    "start": "set PORT=13125 && yarn run start:web",
-    "server": "pouchdb-server -d ./localDB --port 5984",
-    "start:server": "pouchdb-server -d ./localDB --port 5984",
-    "start:all": "concurrently \"set PORT=13125 && yarn run start:web\" \"yarn run start:desktop\"  ",
-    "start:web": "craco start",
-    "build:web": "craco build",
-    "test:web": "craco test",
-    "build:desktop": "npx tsc -p ./electron",
-    "start:desktop": "yarn run build:desktop && electron ./build/electron.js",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@craco/craco": "^6.2.0",
+    "@fluentui/react": "^8.33.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/pouchdb": "^6.4.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/react-sidebar": "^3.0.1",
+    "@types/styled-components": "^5.1.14",
+    "autoprefixer": "9",
+    "concurrently": "^6.2.1",
+    "craco-alias": "^3.0.1",
+    "electron": "^14.0.1",
+    "postcss": "7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@craco/craco": "^6.2.0",
-    "@fluentui/react": "^8.33.0",
-    "@types/react-sidebar": "^3.0.1",
-    "autoprefixer": "9",
-    "concurrently": "^6.2.1",
-    "craco-alias": "^3.0.1",
-    "electron": "^14.0.1",
-    "node-sass": "4.14.1",
-    "postcss": "7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  },
-  "homepage": "./"
+  }
 }
