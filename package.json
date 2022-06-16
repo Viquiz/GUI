@@ -67,7 +67,7 @@
     "autoprefixer": "10.4.2",
     "concurrently": "^7.0.0",
     "craco-alias": "^3.0.1",
-    "electron": "^17.1.2",
+    "electron": "^17.2.0",
     "postcss": "8.4.8",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
